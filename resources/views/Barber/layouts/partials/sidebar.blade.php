@@ -8,8 +8,7 @@
                 </div>
                 <div class="sidebar-profile-name">
                     <p class="sidebar-name">
-                        Kenneth Osborne
-                    </p>
+                    @if(Auth::guard('barber')) {{Auth::guard('barber')->user()->name}}@else{{'-'}}@endif                    </p>
                     <p class="sidebar-designation">
                         Welcome
                     </p>

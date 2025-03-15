@@ -12,14 +12,18 @@
             <li class="nav-item nav-profile dropdown">
                 <a class="nav-link dropdown-toggle  pl-0 pr-0" href="#" data-toggle="dropdown" id="profileDropdown">
                     <i class="typcn typcn-user-outline mr-0"></i>
-                    <span class="nav-profile-name">Evan Morales</span>
+                    <span class="nav-profile-name">@if(Auth::guard('barber')) {{Auth::guard('barber')->user()->name}}@else{{'-'}}@endif</span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
                     <a class="dropdown-item">
                         <i class="typcn typcn-cog text-primary"></i>
                         Settings
                     </a>
-                    <a class="dropdown-item">
+                    <form id="logout-form" action="{{ route('barber.logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+
+                    <a class="dropdown-item" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         <i class="typcn typcn-power text-primary"></i>
                         Logout
                     </a>

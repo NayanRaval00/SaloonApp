@@ -23,7 +23,7 @@
 
     <div class="container-scroller">
 
-        @include('Admin.layouts.partials.header')
+        @include('Barber.layouts.partials.header')
         <div class="container-fluid page-body-wrapper">
             <div class="theme-setting-wrapper">
                 <div id="settings-trigger"><i class="typcn typcn-cog-outline"></i></div>
@@ -51,7 +51,7 @@
                 </div>
             </div>
 
-            @include('Admin.layouts.partials.sidebar')
+            @include('Barber.layouts.partials.sidebar')
             <div class="main-panel">
 
 

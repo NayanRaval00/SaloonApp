@@ -14,9 +14,13 @@ return new class extends Migration
         Schema::create('barbers', function (Blueprint $table) {
             $table->id();
             $table->string('name')->nullable();
-            $table->string('email')->unique();
-            $table->string('password');
+            $table->string('saloon_name')->nullable();
+            $table->string('email')->unique()->nullable();
             $table->string('mobile_number')->nullable();
+            $table->string('city')->nullable();
+            $table->string('state')->nullable();
+            $table->string('country')->nullable();
+            $table->string('password');
             $table->enum('status', [1, 0])->default(1);
             $table->timestamps();
         });

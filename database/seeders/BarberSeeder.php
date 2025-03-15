@@ -14,14 +14,19 @@ class BarberSeeder extends Seeder
      */
     public function run(): void
     {
-        Barber::updateOrCreate(
+       $barber= Barber::updateOrCreate(
             ['email' => 'barber@example.com'], // Unique Identifier
             [
                 'name' => 'Master Barber',
-                'password' => Hash::make('password123'),
+                'saloon_name' => 'Master Saloon',
+                'city' => 'Test',
+                'state' => 'Test State',
+                'country' => 'Test Country',
+                'password' => Hash::make('password'),
                 'mobile_number' => '9876543210',
                 'status' => 1
             ]
         );
+        $barber->syncRoles(['barber']); 
     }
 }
