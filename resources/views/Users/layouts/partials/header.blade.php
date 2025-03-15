@@ -33,7 +33,9 @@
             </ul>
             <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
-        <a class="cta-btn" href="index.html#about">Login</a>
-
+        @if(Auth::guard('web')) {{Auth::guard('web')->user()->name}}
+        @else
+        <a class="cta-btn" href="{{route('users.login')}}">Login</a>
+        @endif
     </div>
 </header>
