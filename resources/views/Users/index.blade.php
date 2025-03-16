@@ -141,7 +141,7 @@
               <div class="icon">
                 <i class="bi bi-stars"></i>
               </div>
-              <a href="service-details.html" class="stretched-link">
+              <a href="" class="stretched-link">
                 <h3>Glow & Glam Package</h3>
               </a>
               <p>Enjoy a rejuvenating facial, eyebrow shaping, and a deluxe manicure at a special discounted price.
@@ -153,13 +153,13 @@
         <div class="col-xl-4 col-md-6" data-aos="zoom-in" data-aos-delay="300">
           <div class="service-item">
             <div class="img">
-              <img src="./assets/img/website_photos/service-2.jpg" class="img-fluid" alt="">
+              <img src="{{ asset('user/assets/img/website_photos/service-2.jpg')}}" class="img-fluid" alt="">
             </div>
             <div class="details position-relative">
               <div class="icon">
                 <i class="bi bi-scissors"></i>
               </div>
-              <a href="service-details.html" class="stretched-link">
+              <a href="" class="stretched-link">
                 <h3>Hair Revival Deal</h3>
               </a>
               <p>Book a haircut and get a deep-conditioning hair spa treatment for free!</p>
@@ -170,13 +170,13 @@
         <div class="col-xl-4 col-md-6" data-aos="zoom-in" data-aos-delay="400">
           <div class="service-item">
             <div class="img">
-              <img src="./assets/img/website_photos/service-2.jpg" class="img-fluid" alt="">
+              <img src="{{ asset('user/assets/img/website_photos/service-2.jpg')}}" class="img-fluid" alt="">
             </div>
             <div class="details position-relative">
               <div class="icon">
                 <i class="bi bi-gem"></i>
               </div>
-              <a href="service-details.html" class="stretched-link">
+              <a href="" class="stretched-link">
                 <h3>Luxury Pamper Session</h3>
               </a>
               <p>Indulge in a full-body massage, hydrating facial, and spa pedicure at an exclusive discounted price.
@@ -254,7 +254,7 @@
               </ul>
             </div>
             <div class="col-lg-6 order-1 order-lg-2 text-center">
-              <img src="./assets/img/website_photos/Hair-11.jpg" alt="Luxury Hair Styling" class="img-fluid">
+              <img src="{{ asset('user/assets/img/website_photos/Hair-11.jpg')}}" alt="Luxury Hair Styling" class="img-fluid">
             </div>
           </div>
         </div>
@@ -276,7 +276,7 @@
               </ul>
             </div>
             <div class="col-lg-6 order-1 order-lg-2 text-center">
-              <img src="./assets/img/website_photos/opening.jpg" alt="Professional Makeup" class="img-fluid">
+              <img src="{{ asset('user/assets/img/website_photos/opening.jpg')}}" alt="Professional Makeup" class="img-fluid">
             </div>
           </div>
         </div>
@@ -298,7 +298,7 @@
               </ul>
             </div>
             <div class="col-lg-6 order-1 order-lg-2 text-center">
-              <img src="./assets/img/website_photos/skin7.jpg" alt="Skincare Treatments" class="img-fluid">
+              <img src="{{ asset('user/assets/img/website_photos/skin7.jpg')}}" alt="Skincare Treatments" class="img-fluid">
             </div>
           </div>
         </div>
@@ -321,7 +321,7 @@
               </ul>
             </div>
             <div class="col-lg-6 order-1 order-lg-2 text-center">
-              <img src="./assets/img/website_photos/Nail-10.jpg" alt="Nail Extensions & Art" class="img-fluid">
+              <img src="{{ asset('user/assets/img/website_photos/Nail-10.jpg')}}" alt="Nail Extensions & Art" class="img-fluid">
             </div>
           </div>
         </div>
@@ -427,7 +427,7 @@
   <!-- Testimonials Section -->
   <section id="testimonials" class="testimonials section dark-background">
 
-    <img src="assets/img/testimonials-bg.jpg" class="testimonials-bg" alt="">
+    <img src="{{ asset('user/assets/img/testimonials-bg.jpg')}}" class="testimonials-bg" alt="">
 
     <div class="container" data-aos="fade-up" data-aos-delay="100">
 
@@ -451,7 +451,7 @@
 
           <div class="swiper-slide">
             <div class="testimonial-item">
-              <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
+              <img src="{{ asset('user/assets/img/testimonials/testimonials-1.jpg')}}" class="testimonial-img" alt="">
               <h3>Aryan Mehta</h3>
               <h4>Salon Owner</h4>
               <div class="stars">
@@ -469,7 +469,7 @@
 
           <div class="swiper-slide">
             <div class="testimonial-item">
-              <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
+              <img src="{{ asset('user/assets/img/testimonials/testimonials-2.jpg')}}" class="testimonial-img" alt="">
               <h3>Priya Sharma</h3>
               <h4>Makeup Artist</h4>
               <div class="stars">
@@ -487,7 +487,7 @@
 
           <div class="swiper-slide">
             <div class="testimonial-item">
-              <img src="assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
+              <img src="{{ asset('user/assets/img/testimonials/testimonials-3.jpg')}}" class="testimonial-img" alt="">
               <h3>Rohit Verma</h3>
               <h4>Corporate Professional</h4>
               <div class="stars">
@@ -505,7 +505,7 @@
 
           <div class="swiper-slide">
             <div class="testimonial-item">
-              <img src="assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
+              <img src="{{ asset('user/assets/img/testimonials/testimonials-4.jpg')}}" class="testimonial-img" alt="">
               <h3>Sneha Iyer</h3>
               <h4>Event Planner</h4>
               <div class="stars">
@@ -523,7 +523,7 @@
 
           <div class="swiper-slide">
             <div class="testimonial-item">
-              <img src="assets/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
+              <img src="{{ asset('user/assets/img/testimonials/testimonials-5.jpg')}}" class="testimonial-img" alt="">
               <h3>Vikram Patel</h3>
               <h4>Entrepreneur</h4>
               <div class="stars">
@@ -575,15 +575,15 @@
           <!-- Hair Styling -->
           <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-hair">
             <div class="portfolio-content h-100">
-              <img src="./assets/img/website_photos/Hair-3.jpg" class="portfolio-img" alt="Elegant Curls">
+              <img src="{{ asset('user/assets/img/website_photos/Hair-3.jpg')}}" class="portfolio-img" alt="Elegant Curls">
               <div class="portfolio-info">
                 <h4>Elegant Curls</h4>
                 <p>Beautiful, voluminous curls for any occasion.</p>
-                <a href="./assets/img/website_photos/Hair-3.jpg" title="Elegant Curls"
+                <a href="{{ asset('user/assets/img/website_photos/Hair-3.jpg')}}" title="Elegant Curls"
                   data-gallery="portfolio-gallery-hair" class="glightbox preview-link">
                   <i class="bi bi-zoom-in"></i>
                 </a>
-                <a href="portfolio-details.html" title="More Details" class="details-link">
+                <a href="" title="More Details" class="details-link">
                   <i class="bi bi-link-45deg"></i>
                 </a>
               </div>
@@ -593,15 +593,15 @@
           <!-- Makeup -->
           <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-makeup">
             <div class="portfolio-content h-100">
-              <img src="./assets/img/website_photos/opening.jpg" class="portfolio-img" alt="Glam Makeup">
+              <img src="{{ asset('user/assets/img/website_photos/opening.jpg')}}" class="portfolio-img" alt="Glam Makeup">
               <div class="portfolio-info">
                 <h4>Glam Makeup</h4>
                 <p>Perfect blend of shimmer and elegance.</p>
-                <a href="./assets/img/website_photos/opening.jpg" title="Glam Makeup"
+                <a href="{{ asset('user/assets/img/website_photos/opening.jpg')}}" title="Glam Makeup"
                   data-gallery="portfolio-gallery-makeup" class="glightbox preview-link">
                   <i class="bi bi-zoom-in"></i>
                 </a>
-                <a href="portfolio-details.html" title="More Details" class="details-link">
+                <a href="" title="More Details" class="details-link">
                   <i class="bi bi-link-45deg"></i>
                 </a>
               </div>
@@ -611,15 +611,15 @@
           <!-- Skincare -->
           <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-skincare">
             <div class="portfolio-content h-100">
-              <img src="./assets/img/website_photos/skin1.jpg" class="portfolio-img" alt="Luxury Facial">
+              <img src="{{ asset('user/assets/img/website_photos/skin1.jpg')}}" class="portfolio-img" alt="Luxury Facial">
               <div class="portfolio-info">
                 <h4>Luxury Facial</h4>
                 <p>Deep hydration for glowing skin.</p>
-                <a href="./assets/img/website_photos/skin1.jpg" title="Luxury Facial"
+                <a href="{{ asset('user/assets/img/website_photos/skin1.jpg')}}" title="Luxury Facial"
                   data-gallery="portfolio-gallery-skincare" class="glightbox preview-link">
                   <i class="bi bi-zoom-in"></i>
                 </a>
-                <a href="portfolio-details.html" title="More Details" class="details-link">
+                <a href="" title="More Details" class="details-link">
                   <i class="bi bi-link-45deg"></i>
                 </a>
               </div>
@@ -629,15 +629,15 @@
           <!-- Nail Art -->
           <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-nailart">
             <div class="portfolio-content h-100">
-              <img src="./assets/img/website_photos/Nail-09.jpg" class="portfolio-img" alt="Floral Nail Art">
+              <img src="{{ asset('user/assets/img/website_photos/Nail-09.jpg')}}" class="portfolio-img" alt="Floral Nail Art">
               <div class="portfolio-info">
                 <h4>Floral Nail Art</h4>
                 <p>Intricate floral designs for a stylish touch.</p>
-                <a href="./assets/img/website_photos/Nail-09.jpg" title="Floral Nail Art"
+                <a href="{{ asset('user/assets/img/website_photos/Nail-09.jpg')}}" title="Floral Nail Art"
                   data-gallery="portfolio-gallery-nailart" class="glightbox preview-link">
                   <i class="bi bi-zoom-in"></i>
                 </a>
-                <a href="portfolio-details.html" title="More Details" class="details-link">
+                <a href="" title="More Details" class="details-link">
                   <i class="bi bi-link-45deg"></i>
                 </a>
               </div>
@@ -647,15 +647,15 @@
           <!-- Bridal Looks -->
           <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-bridal">
             <div class="portfolio-content h-100">
-              <img src="./assets/img/website_photos/bridal_makeup.jpeg" class="portfolio-img" alt="Royal Bridal Look">
+              <img src="{{ asset('user/assets/img/website_photos/bridal_makeup.jpeg')}}" class="portfolio-img" alt="Royal Bridal Look">
               <div class="portfolio-info">
                 <h4>Royal Bridal Look</h4>
                 <p>Exquisite makeup and styling for the perfect bride.</p>
-                <a href="./assets/img/website_photos/bridal_makeup.jpeg" title="Royal Bridal Look"
+                <a href="{{ asset('user/assets/img/website_photos/bridal_makeup.jpeg')}}" title="Royal Bridal Look"
                   data-gallery="portfolio-gallery-bridal" class="glightbox preview-link">
                   <i class="bi bi-zoom-in"></i>
                 </a>
-                <a href="portfolio-details.html" title="More Details" class="details-link">
+                <a href="" title="More Details" class="details-link">
                   <i class="bi bi-link-45deg"></i>
                 </a>
               </div>
@@ -663,15 +663,15 @@
           </div><!-- End Portfolio Item -->
           <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-grooming">
             <div class="portfolio-content h-100">
-              <img src="./assets/img/team/team-1.jpg" class="portfolio-img" alt="Men's Grooming">
+              <img src="{{ asset('user/assets/img/team/team-1.jpg')}}" class="portfolio-img" alt="Men's Grooming">
               <div class="portfolio-info">
                 <h4>Men's Grooming</h4>
                 <p>Professional haircuts, beard trims, and skincare for men.</p>
-                <a href="./assets/img/team/team-1.jpg" title="Men's Grooming"
+                <a href="{{ asset('user/assets/img/team/team-1.jpg')}}" title="Men's Grooming"
                   data-gallery="portfolio-gallery-grooming" class="glightbox preview-link">
                   <i class="bi bi-zoom-in"></i>
                 </a>
-                <a href="portfolio-details.html" title="More Details" class="details-link">
+                <a href="" title="More Details" class="details-link">
                   <i class="bi bi-link-45deg"></i>
                 </a>
               </div>
@@ -700,7 +700,7 @@
 
         <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
           <div class="member">
-            <div class="pic"><img src="assets/img/team/team-1.jpg" class="img-fluid" alt=""></div>
+            <div class="pic"><img src="{{ asset('user/assets/img/team/team-1.jpg')}}" class="img-fluid" alt=""></div>
             <div class="member-info">
               <h4>Amit Sharma</h4>
               <span>Founder & Chief Stylist</span>
@@ -716,7 +716,7 @@
 
         <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
           <div class="member">
-            <div class="pic"><img src="assets/img/team/team-2.jpg" class="img-fluid" alt=""></div>
+            <div class="pic"><img src="{{ asset('user/assets/img/team/team-2.jpg')}}" class="img-fluid" alt=""></div>
             <div class="member-info">
               <h4>Priya Kapoor</h4>
               <span>Senior Makeup Artist</span>
@@ -732,7 +732,7 @@
 
         <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
           <div class="member">
-            <div class="pic"><img src="assets/img/team/team-3.jpg" class="img-fluid" alt=""></div>
+            <div class="pic"><img src="{{ asset('user/assets/img/team/team-3.jpg')}}" class="img-fluid" alt=""></div>
             <div class="member-info">
               <h4>Raj Malhotra</h4>
               <span>Hair & Skincare Specialist</span>
