@@ -14,7 +14,7 @@ class AuthController extends Controller
     public function showLoginForm()
     {
         // if (Auth::guard('barber')->user()) {
-        //     return redirect()->route('Barber.dashboard');
+        //     return redirect()->route('barber.dashboard');
         // }
         return view('Barber.auth.login');
     }
@@ -60,7 +60,7 @@ class AuthController extends Controller
         }
 
         if (Auth::guard('barber')->attempt($credentials)) {
-            return redirect()->route('Barber.dashboard');
+            return redirect()->route('barber.dashboard');
         }
 
         return back()->withErrors(['email' => 'Invalid login credentials.']);

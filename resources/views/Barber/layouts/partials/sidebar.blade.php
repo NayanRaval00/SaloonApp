@@ -8,7 +8,7 @@
                 </div>
                 <div class="sidebar-profile-name">
                     <p class="sidebar-name">
-                    @if(Auth::guard('barber')) {{Auth::guard('barber')->user()->name}}@else{{'-'}}@endif                    </p>
+                        @if(Auth::guard('barber')) {{Auth::guard('barber')->user()->name}}@else{{'-'}}@endif </p>
                     <p class="sidebar-designation">
                         Welcome
                     </p>
@@ -28,24 +28,22 @@
             <p class="sidebar-menu-title">Dash menu</p>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="{{route('barber.dashboard')}}">
                 <i class="typcn typcn-device-desktop menu-icon"></i>
                 <span class="menu-title">Dashboard <span class="badge badge-primary ml-3">New</span></span>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-                <i class="typcn typcn-briefcase menu-icon"></i>
-                <span class="menu-title">UI Elements</span>
-                <i class="typcn typcn-chevron-right menu-arrow"></i>
+            <a class="nav-link" href="{{route('barber.category.list')}}">
+                <i class="typcn typcn-th-large-outline menu-icon"></i>
+                <span class="menu-title">Category Management
             </a>
-            <div class="collapse" id="ui-basic">
-                <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Buttons</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dropdowns.html">Dropdowns</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Typography</a></li>
-                </ul>
-            </div>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{route('barber.service.list')}}">
+                <i class=" typcn typcn-spanner menu-icon"></i>
+                <span class="menu-title">Service Management
+            </a>
         </li>
 
     </ul>

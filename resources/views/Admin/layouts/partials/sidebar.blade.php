@@ -29,12 +29,36 @@
             <p class="sidebar-menu-title">Dash menu</p>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="{{route('admin.dashboard')}}">
                 <i class="typcn typcn-device-desktop menu-icon"></i>
                 <span class="menu-title">Dashboard <span class="badge badge-primary ml-3">New</span></span>
             </a>
         </li>
         <li class="nav-item">
+            <a class="nav-link" href="{{route('admin.user.list')}}">
+                <i class="typcn typcn-user-outline menu-icon"></i>
+                <span class="menu-title">Users Management
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{route('admin.barber.list')}}">
+                <i class="typcn  typcn typcn-user menu-icon"></i>
+                <span class="menu-title">Barber Management
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{route('admin.category.list')}}">
+                <i class="typcn typcn-th-large-outline menu-icon"></i>
+                <span class="menu-title">Category Management
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{route('admin.service.list')}}">
+                <i class=" typcn typcn-spanner menu-icon"></i>
+                <span class="menu-title">Service Management
+            </a>
+        </li>
+        <!-- <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
                 <i class="typcn typcn-briefcase menu-icon"></i>
                 <span class="menu-title">UI Elements</span>
@@ -47,7 +71,8 @@
                     <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Typography</a></li>
                 </ul>
             </div>
-        </li>
+        </li> -->
+
 
     </ul>
 </nav>
