@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Users\AuthController;
 use App\Http\Controllers\Users\CartController;
+use App\Http\Controllers\Users\OrderController;
 use App\Http\Controllers\Users\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,4 +21,7 @@ Route::get('/list-service/{barber_id}', [UserController::class, 'listsServiceByB
 Route::middleware(['user'])->group(function () {
     Route::post('/add-to-cart', [CartController::class, 'addToCart'])->name('users.add.cart');
     Route::get('/view-cart', [CartController::class, 'view'])->name('cart.view');
+    Route::get('/checkout', [OrderController::class, 'checkout'])->name('checkout');
+    Route::get('/order-list', [OrderController::class, 'userOrders'])->name('orders.list');
+    Route::get('/order/{order}', [OrderController::class, 'show'])->name('order.details');
 });

@@ -45,6 +45,12 @@
                 <span class="menu-title">Service Management
             </a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{route('barber.order.list')}}">
+                <i class="typcn typcn-shopping-cart menu-icon"></i>
+                <span class="menu-title">Order Management
+            </a>
+        </li>
 
     </ul>
 </nav>

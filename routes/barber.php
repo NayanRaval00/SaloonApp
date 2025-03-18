@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Barber\BarberController;
 use App\Http\Controllers\Barber\CategoryController;
 use App\Http\Controllers\Barber\ServiceController;
+use App\Http\Controllers\Users\OrderController;
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('barber.login');
 Route::post('/login', [AuthController::class, 'login'])->name('barber.login.post');
@@ -27,4 +28,7 @@ Route::middleware(['barber'])->group(function () {
     Route::get('/service-list', [ServiceController::class, 'list'])->name('barber.service.list');
     Route::get('/create-service', [ServiceController::class, 'create'])->name('barber.service.create');
     Route::post('/save-service', [ServiceController::class, 'save'])->name('barber.service.save');
+
+    /**Order Management */
+    Route::get('/order-list', [OrderController::class, 'barberOrders'])->name('barber.order.list');
 });

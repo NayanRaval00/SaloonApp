@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Barber\BarberController;
+use App\Http\Controllers\Users\OrderController;
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('admin.login');
 Route::post('/login', [AuthController::class, 'login'])->name('admin.login.post');
@@ -36,4 +37,8 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/service-list', [ServiceController::class, 'list'])->name('admin.service.list');
     Route::get('/create-service', [ServiceController::class, 'create'])->name('admin.service.create');
     Route::post('/save-service', [ServiceController::class, 'save'])->name('admin.service.save');
+
+    /**Order Management */
+    Route::get('/order-list', [OrderController::class, 'adminOrders'])->name('admin.order.list');
+    Route::post('/order-approve{orderId}', [OrderController::class, 'approveOrder'])->name('admin.orders.approve');
 });

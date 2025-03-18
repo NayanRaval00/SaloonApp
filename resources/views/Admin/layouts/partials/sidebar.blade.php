@@ -58,6 +58,12 @@
                 <span class="menu-title">Service Management
             </a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{route('admin.order.list')}}">
+                <i class="  typcn typcn-shopping-cart menu-icon"></i>
+                <span class="menu-title">Order Management
+            </a>
+        </li>
         <!-- <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
                 <i class="typcn typcn-briefcase menu-icon"></i>

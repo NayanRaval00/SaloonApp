@@ -1,7 +1,7 @@
 <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center">
 
-        <a href="index.html" class="logo d-flex align-items-center me-auto">
+        <a href="{{url('/')}}" class="logo d-flex align-items-center me-auto">
             <!-- Uncomment the line below if you also wish to use an image logo -->
             <!-- <img src="assets/img/logo.png" alt=""> -->
             <!-- <h1 class="sitename">Shree Radha Beauty</h1> -->
@@ -9,17 +9,20 @@
 
         <nav id="navmenu" class="navmenu">
             <ul>
-                <li><a href="#hero" class="active">Home</a></li>
+                <li><a href="{{url('/')}}" class="active">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#portfolio">Become a Partner</a></li>
                 <li><a href="#" id="contact-link">Contact</a></li>
-                <li class="dropdown"><a href="#services"><span>Services</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                <li class="dropdown">
+                    <a href="#services"><span>Services</span>
+                        <i class="bi bi-chevron-down toggle-dropdown"></i>
+                    </a>
                     <ul>
                         <li><a href="{{route('users.saloons.list')}}">List Saloons</a></li>
                     </ul>
                 </li>
-             <!-- Cart Icon -->
-             <li class="position-relative">
+                <!-- Cart Icon -->
+                <li class="position-relative">
                     <a href="{{ route('cart.view') }}" class="cart-link position-relative">
                         <i class="bi bi-cart text-dark fs-5"></i>
                         @if(session()->has('cart') && count(session('cart')) > 0)
@@ -32,10 +35,14 @@
 
                 <!-- User Auth -->
                 @if(Auth::guard('web')->user() != null)
-                <li class="ms-3">
-                    <span class="text-dark fw-bold">
-                        <i class="bi bi-person-circle me-1"></i> {{ Auth::guard('web')->user()->name }}
-                    </span>
+                <li class="dropdown">
+                    <a href="#services"><span><i class="bi bi-person-circle me-1"></i> {{ Auth::guard('web')->user()->name }}</span>
+                        <i class="bi bi-chevron-down toggle-dropdown"></i>
+                    </a>
+                    <ul>
+                        <li><a href="{{route('orders.list')}}">List Orders</a></li>
+
+                    </ul>
                 </li>
                 @else
                 <li class="ms-3">
@@ -45,6 +52,6 @@
             </ul>
             <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
-       
+
     </div>
 </header>

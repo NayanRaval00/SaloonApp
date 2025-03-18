@@ -41,7 +41,7 @@
             @endforeach
         </tbody>
     </table>
-    <a href="" class="btn btn-success">Proceed to Checkout</a>
+    <a href="{{ route('checkout') }}" class="btn btn-success">Proceed to Checkout</a>
     @endif
 </div>
 </main>
