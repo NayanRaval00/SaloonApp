@@ -13,13 +13,13 @@ class AuthController extends Controller
 {
     public function showLoginForm()
     {
-        return view('Users.auth.login');
+        return view('Users.web.auth.login');
     }
 
 
     public function showRegisterForm()
     {
-        return view('Users.auth.register');
+        return view('Users.web.auth.register');
     }
 
     public function register(UsersRegisterRequest $request)
@@ -35,7 +35,7 @@ class AuthController extends Controller
             'status' => '1',
         ])->syncRoles(['user']);
 
-        return redirect()->route('users.login')->with('success', 'Registration successful!!');
+        return redirect()->route('user.web.home')->with('success', 'Registration successful!!');
     }
 
     public function login(Request $request)
@@ -56,7 +56,7 @@ class AuthController extends Controller
         }
 
         if (Auth::guard('web')->attempt($credentials)) {
-            return redirect('/');
+            return redirect()->route('user.web.home');
         }
 
         return back()->withErrors(['email' => 'Invalid login credentials.']);

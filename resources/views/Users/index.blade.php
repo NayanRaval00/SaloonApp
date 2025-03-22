@@ -800,54 +800,39 @@
         </div>
 
         <div class="col-lg-6">
-          <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up"
-            data-aos-delay="500">
+          <form id="registration-form" method="POST" action="{{ route('users.register.data') }}">
+            @csrf
             <div class="row gy-4">
-
               <div class="col-md-6">
-                <input type="text" name="name" class="form-control" placeholder="Your Full Name" required="">
+                <input type="text" name="name" class="form-control" placeholder="Your Full Name" required>
               </div>
-
               <div class="col-md-6">
-                <input type="email" class="form-control" name="email" placeholder="Your Email Address">
+                <input type="email" class="form-control" name="email" placeholder="Your Email Address" required>
               </div>
-
               <div class="col-md-6">
-                <input type="text" name="phone" class="form-control" placeholder="Your Phone Number" required="">
+                <input type="text" name="mobile_number" class="form-control" placeholder="Your Phone Number" required>
               </div>
-
               <div class="col-md-6">
-                <input type="text" name="location" class="form-control" placeholder="Your Location">
+                <input type="text" name="city" class="form-control" placeholder="Your City" required>
               </div>
-
-              <div class="col-md-12">
-                <select name="service" class="form-control" required="">
-                  <option value="" disabled selected>Select a Service</option>
-                  <option value="hair-styling">Hair Styling</option>
-                  <option value="makeup">Makeup</option>
-                  <option value="skincare">Skincare</option>
-                  <option value="nail-art">Nail Art</option>
-                  <option value="bridal-makeup">Bridal Makeup</option>
-                  <option value="mens-grooming">Men's Grooming</option>
-                  <option value="other">Other</option>
-                </select>
+              <div class="col-md-6">
+                <input type="text" name="state" class="form-control" placeholder="Your State" required>
               </div>
-
-              <div class="col-md-12">
-                <textarea class="form-control" name="message" rows="4"
-                  placeholder="Tell us how we can help you!"></textarea>
+              <div class="col-md-6">
+                <input type="text" name="country" class="form-control" placeholder="Your Country" required>
               </div>
-
+              <div class="col-md-6">
+                <input type="password" name="password" class="form-control" placeholder="Your Password" required>
+              </div>
+              <div class="col-md-6">
+                <input type="password" name="password_confirmation" class="form-control" placeholder="Confirm Password" required>
+              </div>
               <div class="col-md-12 text-center">
-                <div class="loading">Processing...</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Thank you! We'll get back to you shortly.</div>
-
-                <button type="submit">Submit Enquiry</button>
+                <button type="submit" class="btn btn-primary">Register</button>
               </div>
-
             </div>
           </form>
+
         </div><!-- End Contact Form -->
 
       </div>
@@ -864,41 +849,39 @@
         <p>We'd love to hear from you! Fill out the form below and we'll get back to you as soon as possible.</p>
         <span class="close-btn">&times;</span>
       </div>
-      <form id="contact-form">
+      <form id="registration-form" method="POST" action="{{ route('users.register.data') }}">
+        @csrf
         <div class="row gy-4">
           <div class="col-md-6">
             <input type="text" name="name" class="form-control" placeholder="Your Full Name" required>
           </div>
           <div class="col-md-6">
-            <input type="email" class="form-control" name="email" placeholder="Your Email Address">
+            <input type="email" class="form-control" name="email" placeholder="Your Email Address" required>
           </div>
           <div class="col-md-6">
-            <input type="text" name="phone" class="form-control" placeholder="Your Phone Number" required>
+            <input type="text" name="mobile_number" class="form-control" placeholder="Your Phone Number" required>
           </div>
           <div class="col-md-6">
-            <input type="text" name="location" class="form-control" placeholder="Your Location">
+            <input type="text" name="city" class="form-control" placeholder="Your City" required>
           </div>
-          <div class="col-md-12">
-            <select name="service" class="form-control" required>
-              <option value="" disabled selected>Select a Service</option>
-              <option value="hair-styling">Hair Styling</option>
-              <option value="makeup">Makeup</option>
-              <option value="skincare">Skincare</option>
-              <option value="nail-art">Nail Art</option>
-              <option value="bridal-makeup">Bridal Makeup</option>
-              <option value="mens-grooming">Men's Grooming</option>
-              <option value="other">Other</option>
-            </select>
+          <div class="col-md-6">
+            <input type="text" name="state" class="form-control" placeholder="Your State" required>
           </div>
-          <div class="col-md-12">
-            <textarea class="form-control" name="message" rows="4"
-              placeholder="Tell us how we can help you!"></textarea>
+          <div class="col-md-6">
+            <input type="text" name="country" class="form-control" placeholder="Your Country" required>
+          </div>
+          <div class="col-md-6">
+            <input type="password" name="password" class="form-control" placeholder="Your Password" required>
+          </div>
+          <div class="col-md-6">
+            <input type="password" name="password_confirmation" class="form-control" placeholder="Confirm Password" required>
           </div>
           <div class="col-md-12 text-center">
-            <button type="submit">Submit Enquiry</button>
+            <button type="submit" class="btn btn-primary">Register</button>
           </div>
         </div>
       </form>
+
     </div>
   </div>
 </main>

@@ -28,4 +28,39 @@ class UserController extends Controller
 
         return view('Users.Saloons.serviceList', compact('services'));
     }
+
+    public function userWebsite()
+    {
+        return view('Users.web.index');
+    }
+
+    public function aboutUs()
+    {
+        return view('Users.web.about');
+    }
+
+    public function services()
+    {
+        return view('Users.web.services');
+    }
+
+    public function blogs()
+    {
+        return view('Users.web.blogs');
+    }
+
+    public function portfolio()
+    {
+        return view('Users.web.portfolio');
+    }
+
+    public function contactUs()
+    {
+        return view('Users.web.contactus');
+    }
+
+    public function becomeAPartner() {
+        return view('Users.web.become_partner');
+    }
+
 }
