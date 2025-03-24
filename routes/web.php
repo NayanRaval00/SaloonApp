@@ -3,14 +3,13 @@
 use App\Http\Controllers\Users\AuthController;
 use App\Http\Controllers\Users\CartController;
 use App\Http\Controllers\Users\OrderController;
+use App\Http\Controllers\Users\PartnerController;
 use App\Http\Controllers\Users\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [UserController::class, 'home'])->name('users.home');
 Route::post('/login', [AuthController::class, 'login'])->name('users.login.post');
 Route::post('/register', [AuthController::class, 'register'])->name('users.register.data');
-Route::get('/list-saloons', [UserController::class, 'listSaloons'])->name('users.saloons.list');
-Route::get('/list-service/{barber_id}', [UserController::class, 'listsServiceByBarber'])->name('users.service.list');
 
 
 Route::middleware(['user'])->group(function () {
@@ -19,6 +18,9 @@ Route::middleware(['user'])->group(function () {
     Route::get('/checkout', [OrderController::class, 'checkout'])->name('checkout');
     Route::get('/order-list', [OrderController::class, 'userOrders'])->name('orders.list');
     Route::get('/order/{order}', [OrderController::class, 'show'])->name('order.details');
+
+    Route::post('/logout', [AuthController::class, 'logout'])->name('user.logout');
+
 });
 
 Route::group(['prefix' => 'user'], function () {
@@ -32,5 +34,10 @@ Route::group(['prefix' => 'user'], function () {
 
     Route::get('/login', [AuthController::class, 'showLoginForm'])->name('user.web.login');
     Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('user.web.register');
-    Route::get('/become-a-partner', [UserController::class, 'becomeAPartner'])->name('user.web.partner');
+    Route::get('/become-a-partner', [PartnerController::class, 'becomeAPartner'])->name('user.web.partner');
+    Route::post('/become-partner', [PartnerController::class, 'store'])->name('users.web.becomepartner');
+
+
+    Route::get('/list-saloons', [UserController::class, 'listSaloons'])->name('users.saloons.list');
+    Route::get('/list-service/{barber_id}', [UserController::class, 'listsServiceByBarber'])->name('users.service.list');
 });

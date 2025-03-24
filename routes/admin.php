@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\PartnerController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Barber\BarberController;
 use App\Http\Controllers\Users\OrderController;
@@ -26,6 +27,9 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/create-barber', [BarberController::class, 'createBarberPage'])->name('admin.barbers.create');
     Route::post('/save-barber', [BarberController::class, 'create'])->name('admin.barbers.save');
 
+    Route::get('/barber/register/{token}', [BarberController::class, 'showRegisterForm'])->name('admin.barber.register');
+    Route::post('/barber/register', [BarberController::class, 'store'])->name('barber.register.store');
+
 
     /**Category Management */
     Route::get('/category-list', [CategoryController::class, 'list'])->name('admin.category.list');
@@ -41,4 +45,9 @@ Route::middleware(['admin'])->group(function () {
     /**Order Management */
     Route::get('/order-list', [OrderController::class, 'adminOrders'])->name('admin.order.list');
     Route::post('/order-approve{orderId}', [OrderController::class, 'approveOrder'])->name('admin.orders.approve');
+
+
+    /**Partner Management */
+    Route::get('/partners', [PartnerController::class, 'index'])->name('admin.partners.list');
+    Route::post('/partners/update-status', [PartnerController::class, 'updateStatus'])->name('admin.partners.updateStatus');
 });

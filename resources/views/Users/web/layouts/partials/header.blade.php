@@ -34,7 +34,7 @@
 <!-- Navbar Start -->
 <div class="container-fluid p-0">
     <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0 px-lg-5">
-        <a href="" class="navbar-brand ml-lg-3">
+        <a href="{{route('user.web.home')}}" class="navbar-brand ml-lg-3">
             <h1 class="m-0 text-primary"><span class="text-dark">SPA</span> Center</h1>
         </a>
         <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
@@ -42,14 +42,14 @@
         </button>
         <div class="collapse navbar-collapse justify-content-between px-lg-3" id="navbarCollapse">
             <div class="navbar-nav m-auto py-0">
-                <a href="" class="nav-item nav-link active">Home</a>
-                <a href="" class="nav-item nav-link">About</a>
+                <a href="{{route('user.web.home')}}" class="nav-item nav-link active">Home</a>
+                <a href="{{route('user.web.about')}}" class="nav-item nav-link">About</a>
                 <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Services</a>
+                    <a href="{{route('users.saloons.list')}}" class="nav-link dropdown-toggle" data-toggle="dropdown">Services</a>
                     <div class="dropdown-menu rounded-0 m-0">
                         <!-- Women's Services Dropdown -->
                         <div class="dropdown-item has-submenu">
-                            <a href="#" class="submenu-trigger">Women's Salon & Spa</a>
+                            <a href="{{route('users.saloons.list')}}" class="submenu-trigger">Women's Salon & Spa</a>
                             <div class="submenu">
                                 <a class="dropdown-item" href="">Salon for Women</a>
                                 <a class="dropdown-item" href="">Spa for Women</a>
@@ -59,7 +59,7 @@
                         </div>
                         <!-- Men's Services Dropdown -->
                         <div class="dropdown-item has-submenu">
-                            <a href="#" class="submenu-trigger">Men's Salon & Massage</a>
+                            <a href="{{route('users.saloons.list')}}" class="submenu-trigger">Men's Salon & Massage</a>
                             <div class="submenu">
                                 <a class="dropdown-item" href="">Salon for Men</a>
                                 <a class="dropdown-item" href="">Massage for Men</a>
@@ -68,22 +68,27 @@
                         </div>
                     </div>
                 </div>
-                <a href="" class="nav-item nav-link">Blogs</a>
-                <a href="" class="nav-item nav-link">Portfolio</a>
-                <a href="" class="nav-item nav-link">Become A Partner</a>
-                <a href="" class="nav-item nav-link">Contact</a>
+                <a href="{{route('user.web.blogs')}}" class="nav-item nav-link">Blogs</a>
+                <a href="{{route('user.web.portfolio')}}" class="nav-item nav-link">Portfolio</a>
+                <a href="{{route('user.web.partner')}}" class="nav-item nav-link">Become A Partner</a>
+                <a href="{{route('user.web.contact-us')}}" class="nav-item nav-link">Contact</a>
             </div>
             @if(Auth::guard('web')->user() != null)
 
             <div class="nav-item dropdown">
-                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><i class="fab fa fa-user"></i> {{ Auth::guard('web')->user()->name }}</a>
+                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><i class="fab fa fa-user"></i> &nbsp;{{ Auth::guard('web')->user()->name }}</a>
                 <div class="dropdown-menu rounded-0 m-0">
                     <!-- Women's Services Dropdown -->
                     <div class="dropdown-item has-submenu">
-                        <a class="submenu-trigger" href="{{route('orders.list')}}">List Orders</a>
+                        <a class="submenu-trigger" href="{{route('orders.list')}}"><i class="fa fa-cart-plus"></i>&nbsp; My Orders</a>
                         <div class="submenu">
-                            <a class="submenu-trigger" href="{{route('orders.list')}}">Logout</a>
-
+                            <a class="submenu-trigger" href="{{route('cart.view')}}"><i class="fa fa-shopping-cart"></i>&nbsp; My Cart</a>
+                        </div>
+                        <div class="submenu">
+                            <form id="logout-form" action="{{ route('user.logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                            <a onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="submenu-trigger" href="{{route('orders.list')}}"><i class="fa fa-sign-out"></i>&nbsp; Logout</a>
                         </div>
                     </div>
                 </div>

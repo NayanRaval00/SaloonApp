@@ -12,7 +12,7 @@ class UserMiddleware
     {
         $web = Auth::guard('web')->user();
         if (!$web || !$web->hasRole('user')) {
-            return redirect()->route('users.login')->with('error', 'Access Denied!');
+            return redirect()->route('user.web.login')->with('error', 'Access Denied!');
         }
         return $next($request);
     }

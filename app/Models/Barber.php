@@ -16,13 +16,24 @@ class Barber extends Authenticatable
 
     protected $fillable = [
         'name',
-        'saloon_name',
+        'email',
         'mobile_number',
+        'address',
         'city',
         'state',
+        'postal_code',
         'country',
-        'email',
+        'saloon_name',
+        'business_type',
+        'website',
+        'business_address',
+        'how_did_you_hear',
+        'agree_terms',
         'password',
-        'status',
+        'status'
+    ];
+
+    protected $casts = [
+        'agree_terms' => 'boolean',
     ];
 }

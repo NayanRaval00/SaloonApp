@@ -1,4 +1,4 @@
-@extends('Users.layouts.user')
+@extends('Users.web.layouts.user')
 
 @section('title', 'Order')
 
@@ -36,7 +36,7 @@
                         <td>₹{{ $order->total_price }}</td>
                         <td>{{ ucfirst($order->status) }}</td>
                         <td>
-                        <a href="{{ route('order.details', $order->id) }}" class="btn btn-info btn-sm">View Details</a>
+                            <a href="{{ route('order.details', $order->id) }}" class="btn btn-info btn-sm">View Details</a>
                         </td>
                     </tr>
                     @endforeach
@@ -47,6 +47,6 @@
 
             @endif
         </div>
+    </section>
 </main>
-</section>
 @endsection

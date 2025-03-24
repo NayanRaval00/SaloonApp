@@ -1,4 +1,4 @@
-@extends('Users.layouts.user')
+@extends('Users.web.layouts.user')
 
 @section('title', 'Order Details')
 

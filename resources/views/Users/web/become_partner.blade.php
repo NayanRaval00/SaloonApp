@@ -9,9 +9,13 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 mb-5">
-                <form action="{{ route('users..web.becomepartner') }}" method="post" class="p-5 bg-white">
+                <form action="{{ route('users.web.becomepartner') }}" method="post" class="p-5 bg-white">
                     @csrf
                     <h2 class="mb-4 site-section-heading">Become A Partner Now</h2>
+                    @if(session('success'))
+                    <div class="alert alert-success">{{ session('success') }}</div>
+                    @endif
+
 
                     <!-- Full Name -->
                     <div class="row form-group">

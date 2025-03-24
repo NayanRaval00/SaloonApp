@@ -58,9 +58,4 @@ class UserController extends Controller
     {
         return view('Users.web.contactus');
     }
-
-    public function becomeAPartner() {
-        return view('Users.web.become_partner');
-    }
-
 }

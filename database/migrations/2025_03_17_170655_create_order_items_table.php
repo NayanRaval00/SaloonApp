@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('order_id')->constrained()->onDelete('cascade');
             $table->foreignId('service_id')->constrained()->onDelete('cascade');
             $table->foreignId('barber_id')->constrained()->onDelete('cascade');
-            $table->integer('duration'); // in minutes
+            $table->integer('duration')->nullable(); // in minutes
             $table->dateTime('date_time');
             $table->decimal('price', 10, 2);
             $table->timestamps();

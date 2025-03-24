@@ -62,11 +62,9 @@ class AuthController extends Controller
         return back()->withErrors(['email' => 'Invalid login credentials.']);
     }
 
-
-
     public function logout()
     {
         Auth::guard('web')->logout();
-        return redirect()->route('Users.login');
+        return redirect()->route('user.web.login');
     }
 }

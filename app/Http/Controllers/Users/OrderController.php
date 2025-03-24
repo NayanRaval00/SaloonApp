@@ -37,7 +37,6 @@ class OrderController extends Controller
                 'order_id' => $order->id,
                 'service_id' => $item->service_id,
                 'barber_id' => $item->service->barber_id,
-                'duration' => $item->duration,
                 'date_time' => $item->date_time,
                 'price' => $item->price,
             ]);

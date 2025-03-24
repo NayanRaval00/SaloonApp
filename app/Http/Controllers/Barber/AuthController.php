@@ -39,7 +39,7 @@ class AuthController extends Controller
             'status' => '0',
         ])->syncRoles(['barber']);
 
-        return redirect()->route('Barber.login')->with('success', 'Registration successful. Please wait for approval.');
+        return redirect()->route('barber.login')->with('success', 'Registration successful. Please wait for approval.');
     }
 
     public function login(Request $request)

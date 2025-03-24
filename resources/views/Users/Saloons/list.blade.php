@@ -1,14 +1,23 @@
-@extends('Users.layouts.user')
+@extends('Users.web.layouts.user')
 
 @section('title', 'Best Saloons Listing')
 
 
 @section('content')
 
+
+<div class="jumbotron jumbotron-fluid bg-jumbotron" style="margin-bottom: 90px;">
+    <div class="container text-center py-5">
+        <h3 class="text-white display-3 mb-4">Saloons</h3>
+
+    </div>
+</div>
+<!-- Header End -->
+
+
 <main class="main">
     <!-- Services Section -->
     <section id="services" class="services section">
-
         <!-- Section Title -->
         <div class="container section-title" data-aos="fade-up">
             <h2>Saloons</h2>
@@ -34,6 +43,7 @@
                             <p>Contact: {{ $saloon->mobile_number }}</p>
                         </div>
                     </div>
+
                 </div>
                 @empty
                 <p class="text-center">No saloons available at the moment.</p>

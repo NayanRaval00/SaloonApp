@@ -19,15 +19,14 @@ class CartController extends Controller
 
         $request->validate([
             'service_id' => 'required|exists:services,id',
-            'duration' => 'required|integer|min:1',
         ]);
 
         $service = Service::findOrFail($request->service_id);
-        $totalPrice = $service->price * $request->duration;
+        $totalPrice = $service->price;
 
         Cart::updateOrCreate(
             ['user_id' => $userId, 'service_id' => $request->service_id],
-            ['duration' => $request->duration, 'price' => $totalPrice, 'date_time' => $request->datetime]
+            ['price' => $totalPrice, 'date_time' => $request->datetime]
         );
 
         return redirect()->back()->with('success', 'Service added to cart.');
