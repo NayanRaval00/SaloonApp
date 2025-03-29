@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignId('service_id')->constrained()->onDelete('cascade');
             $table->integer('duration')->nullable(); 
             $table->dateTime('date_time'); 
+            $table->integer('slot_id')->nullable();
             $table->decimal('price', 10, 2);
             $table->timestamps();
         });

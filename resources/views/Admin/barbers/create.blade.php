@@ -11,7 +11,7 @@
                 <p class="card-description">
                     Create Barber
                 </p>
-                <form method="POST" action="{{ route('admin.barbers.save') }}">
+                <form method="POST" action="{{ route('admin.barbers.save') }}" enctype="multipart/form-data">
                     @csrf
 
                     <div class="form-group">
@@ -48,6 +48,12 @@
                             <option value="India">India</option>
                         </select>
                         @error('country') <small class="text-danger">{{ $message }}</small> @enderror
+                    </div>
+
+                    <div class="form-group">
+                        <input type="file" class="form-control @error('profile_image') is-invalid @enderror"
+                            id="profileImage" name="profile_image">
+                        @error('profile_image') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
 
                     <div class="form-group">

@@ -24,10 +24,18 @@ class CartController extends Controller
         $service = Service::findOrFail($request->service_id);
         $totalPrice = $service->price;
 
-        Cart::updateOrCreate(
-            ['user_id' => $userId, 'service_id' => $request->service_id],
-            ['price' => $totalPrice, 'date_time' => $request->datetime]
-        );
+        // Cart::updateOrCreate(
+        //     ['user_id' => $userId, 'service_id' => $request->service_id],
+        //     ['price' => $totalPrice, 'date_time' => $request->datetime]
+        // );
+
+        Cart::create([
+            'user_id' => $userId,
+            'service_id' => $request->service_id,
+            'price' => $totalPrice,
+            'date_time' => $request->datetime,
+            'slot_id' => $request->slot
+        ]);
 
         return redirect()->back()->with('success', 'Service added to cart.');
     }

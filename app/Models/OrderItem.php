@@ -9,7 +9,7 @@ class OrderItem extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['order_id', 'service_id', 'barber_id', 'duration', 'date_time', 'price'];
+    protected $fillable = ['order_id', 'service_id', 'barber_id', 'duration', 'date_time', 'price', 'slot_id'];
 
     public function service()
     {
@@ -24,5 +24,10 @@ class OrderItem extends Model
     public function barber()
     {
         return $this->belongsTo(Barber::class);
+    }
+
+    public function slot()
+    {
+        return $this->belongsTo(Slots::class);
     }
 }

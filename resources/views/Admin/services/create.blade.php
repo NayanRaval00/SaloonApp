@@ -68,7 +68,15 @@
                             id="servicetime" name="time" value="{{ old('time') }}">
                         @error('time') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
-
+                    <div class="form-group">
+                        <label for="serviceSlot">Select Time Slots</label>
+                        <select class="form-control @error('slot') is-invalid @enderror" id="serviceSlot" name="slot[]" multiple>
+                            @foreach($serviceSlots as $slot)
+                            <option value="{{ $slot->id }}">{{ $slot->slot_time }}</option>
+                            @endforeach
+                        </select>
+                        @error('slot') <span class="text-danger">{{ $message }}</span> @enderror
+                    </div>
                     <div class="form-group">
                         <label>Status</label>
                         <select class="form-control" name="status">

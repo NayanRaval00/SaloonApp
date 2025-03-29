@@ -374,7 +374,7 @@
                 <p><i class="fa fa-check text-success mr-2"></i>Foot & Nail Care</p>
                 <p><i class="fa fa-gift text-warning mr-2"></i>1 Free Coffee Voucher</p>
                 <p><i class="fa fa-tags text-info mr-2"></i>10% Off Next Visit</p>
-                <a href="book-now.html" class="btn btn-primary my-2">Order Now</a>
+                <a href="" class="btn btn-primary my-2">Order Now</a>
               </div>
             </div>
             <!-- Family Plan -->
@@ -397,7 +397,7 @@
                 <p><i class="fa fa-check text-success mr-2"></i>Foot & Nail Care</p>
                 <p><i class="fa fa-gift text-warning mr-2"></i>2 Free Coffee Vouchers</p>
                 <p><i class="fa fa-star text-info mr-2"></i>Exclusive Weekly Offer</p>
-                <a href="book-now.html" class="btn btn-primary my-2">Order Now</a>
+                <a href="" class="btn btn-primary my-2">Order Now</a>
               </div>
             </div>
             <!-- VIP Plan -->
@@ -421,7 +421,7 @@
                 <p><i class="fa fa-gift text-warning mr-2"></i>3 Free Coffee Vouchers</p>
                 <p><i class="fa fa-gift text-warning mr-2"></i>Complimentary Spa Session</p>
                 <p><i class="fa fa-star text-info mr-2"></i>Exclusive Weekly Offer</p>
-                <a href="book-now.html" class="btn btn-primary my-2">Order Now</a>
+                <a href="" class="btn btn-primary my-2">Order Now</a>
               </div>
             </div>
           </div>

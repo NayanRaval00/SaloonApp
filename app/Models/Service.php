@@ -29,4 +29,14 @@ class Service extends Model
     {
         return $this->belongsTo(Category::class);
     }
+
+    public function serviceSlots()
+    {
+        return $this->hasMany(ServiceSlots::class, 'service_id');
+    }
+
+    public function slots()
+    {
+        return $this->belongsToMany(Slots::class, 'service_slots', 'service_id', 'slot_id');
+    }
 }

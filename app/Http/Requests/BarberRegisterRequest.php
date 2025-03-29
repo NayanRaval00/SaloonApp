@@ -30,6 +30,7 @@ class BarberRegisterRequest extends FormRequest
             'state' => 'nullable|string|max:255',
             'country' => 'required|string|max:255',
             'password' => 'required|string|min:6|confirmed',
+            'profile_image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ];
     }
 }

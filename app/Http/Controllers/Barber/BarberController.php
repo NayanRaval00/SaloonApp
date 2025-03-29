@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\BarberRegisterRequest;
 use App\Models\Barber;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class BarberController extends Controller
 {
@@ -23,6 +25,8 @@ class BarberController extends Controller
 
     public function create(BarberRegisterRequest $request)
     {
+        $imagePath = $request->file('profile_image')->store('barbers', 'public');
+
         $barber = Barber::create([
             'name' => $request->name,
             'saloon_name' => $request->saloon_name,
@@ -33,6 +37,7 @@ class BarberController extends Controller
             'country' => $request->country,
             'password' => Hash::make($request->password),
             'status' => '1',
+            'profile_image' => $imagePath,
         ])->syncRoles(['barber']);
 
         return redirect()->route('admin.barber.list')->with('success', 'Registration successful. ');
@@ -84,5 +89,50 @@ class BarberController extends Controller
         ]);
 
         return redirect()->route('barber.login')->with('success', 'Registration successful! Please log in.');
+    }
+
+
+    public function edit()
+    {
+        $barber = Auth::guard('barber')->user(); // Get the logged-in barber
+        return view('Barber.auth.profile', compact('barber'));
+    }
+
+    public function update(Request $request)
+    {
+        $barberId = Auth::guard('barber')->user()->id;
+
+        $barber = Barber::where('id', $barberId)->first();
+
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'saloon_name' => 'required|string|max:255',
+            'profile_image' => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
+            'password' => 'nullable|min:6|confirmed',
+        ]);
+
+        // Prepare data for update
+        $updateData = [
+            'name' => $request->name,
+            'saloon_name' => $request->saloon_name,
+        ];
+
+        // Handle profile image update
+        if ($request->hasFile('profile_image')) {
+            if ($barber->profile_image) {
+                Storage::disk('public')->delete($barber->profile_image); // Delete old image
+            }
+            $updateData['profile_image'] = $request->file('profile_image')->store('barbers', 'public');
+        }
+
+        // Handle password update
+        if ($request->filled('password')) {
+            $updateData['password'] = Hash::make($request->password);
+        }
+
+        // Use update() method
+        $barber->update($updateData);
+
+        return redirect()->back()->with('success', 'Profile updated successfully!');
     }
 }

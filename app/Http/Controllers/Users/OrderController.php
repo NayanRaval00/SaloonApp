@@ -39,6 +39,8 @@ class OrderController extends Controller
                 'barber_id' => $item->service->barber_id,
                 'date_time' => $item->date_time,
                 'price' => $item->price,
+                'slot_id' => $item->slot_id
+
             ]);
         }
 
@@ -63,7 +65,7 @@ class OrderController extends Controller
 
     public function barberOrders()
     {
-        $orders = OrderItem::whereHas('barber', function ($query) {
+        $orders = OrderItem::with('slot')->whereHas('barber', function ($query) {
             $query->where('id', Auth::guard('barber')->id());
         })->latest()->paginate(10);
 

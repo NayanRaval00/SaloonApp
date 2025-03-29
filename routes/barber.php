@@ -4,6 +4,7 @@ use App\Http\Controllers\Barber\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Barber\BarberController;
 use App\Http\Controllers\Barber\CategoryController;
+use App\Http\Controllers\Barber\CouponController;
 use App\Http\Controllers\Barber\ServiceController;
 use App\Http\Controllers\Users\OrderController;
 
@@ -31,4 +32,16 @@ Route::middleware(['barber'])->group(function () {
 
     /**Order Management */
     Route::get('/order-list', [OrderController::class, 'barberOrders'])->name('barber.order.list');
+
+    /**Coupon Management */
+    Route::get('/coupons', [CouponController::class, 'index'])->name('barber.coupons.index');
+    Route::get('/coupons/create', [CouponController::class, 'create'])->name('barber.coupons.create');
+    Route::post('/coupons', [CouponController::class, 'store'])->name('barber.coupons.store');
+    Route::get('/coupons/{coupon}/edit', [CouponController::class, 'edit'])->name('barber.coupons.edit');
+    Route::put('/coupons/{coupon}', [CouponController::class, 'update'])->name('barber.coupons.update');
+    Route::delete('/coupons/{coupon}', [CouponController::class, 'destroy'])->name('barber.coupons.destroy');
+
+    /**Barber Profile */
+    Route::get('/barber/profile', [BarberController::class, 'edit'])->name('barber.profile.edit');
+    Route::post('/barber/profile', [BarberController::class, 'update'])->name('barber.profile.update');
 });

@@ -13,10 +13,10 @@
 
                 <div class="d-flex align-items-center justify-content-md-end">
                     <div class="pr-1 mb-3 mr-2 mb-xl-0">
-                       
+
                         <a href="{{route('admin.barbers.create')}}" class="btn btn-info btn-rounded btn-fw">Create Barber</a>
                     </div>
-                   
+
                 </div>
 
                 <div class="table-responsive pt-3">
@@ -25,6 +25,7 @@
                             <tr>
                                 <th>#</th>
                                 <th>Name</th>
+                                <th>Image</th>
                                 <th>Email</th>
                                 <th>Mobile Number</th>
                                 <th>City</th>
@@ -39,6 +40,7 @@
                             <tr>
                                 <td>{{ $barbers->firstItem() + $key }}</td>
                                 <td>{{ $barber->name }}</td>
+                                <td><img src="{{ asset('storage/' . $barber->profile_image) }}" width="50" height="50"></td>
                                 <td>{{ $barber->email }}</td>
                                 <td>{{ $barber->mobile_number ?? 'N/A' }}</td>
                                 <td>{{ $barber->city ?? 'N/A' }}</td>

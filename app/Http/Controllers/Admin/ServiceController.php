@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Service;
 use App\Models\Barber;
 use App\Models\Category;
+use App\Models\ServiceSlots;
+use App\Models\Slots;
 use Illuminate\Http\Request;
 
 class ServiceController extends Controller
@@ -22,7 +24,8 @@ class ServiceController extends Controller
     {
         $barbers = Barber::where('status', 1)->get();
         $categories = Category::all();
-        return view('Admin.services.create', compact('barbers', 'categories'));
+        $serviceSlots = Slots::get();
+        return view('Admin.services.create', compact('barbers', 'categories', 'serviceSlots'));
     }
 
     // Save service
@@ -37,12 +40,14 @@ class ServiceController extends Controller
             'price' => 'required|numeric|min:0',
             'time' => 'required|date_format:H:i',
             'status' => 'required|boolean',
+            'slot' => 'required|array', // Ensures slot selection is required
+            'slot.*' => 'exists:slots,id', // Ensures each selected slot ID exists in the service_slots table
         ]);
 
         // Handle image upload
         $imagePath = $request->file('image')->store('services', 'public');
 
-        Service::create([
+        $service =  Service::create([
             'name' => $request->name,
             'image' => $imagePath,
             'description' => $request->description,
@@ -54,6 +59,13 @@ class ServiceController extends Controller
             'status' => $request->status,
         ]);
 
+        foreach ($request->slot as $slotId) {
+            ServiceSlots::create([
+                'service_id' => $service->id,
+                'slot_id' => $slotId,
+                'status' => 1,
+            ]);
+        }
         return redirect()->route('admin.service.list')->with('success', 'Service created successfully.');
     }
 }

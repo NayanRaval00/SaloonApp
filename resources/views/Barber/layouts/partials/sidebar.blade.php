@@ -3,7 +3,7 @@
         <li class="nav-item">
             <div class="d-flex sidebar-profile">
                 <div class="sidebar-profile-image">
-                    <img src="{{ asset('admin/images/faces/face29.png') }}" alt="image">
+                    <img src="@if(Auth::guard('barber') && Auth::guard('barber')->user()->profile_image!=null) {{asset('storage/' . Auth::guard('barber')->user()->profile_image)}}@else{{ asset('admin/images/faces/face29.png') }}@endif" alt="image">
                     <span class="sidebar-status-indicator"></span>
                 </div>
                 <div class="sidebar-profile-name">
@@ -49,6 +49,12 @@
             <a class="nav-link" href="{{route('barber.order.list')}}">
                 <i class="typcn typcn-shopping-cart menu-icon"></i>
                 <span class="menu-title">Order Management
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{route('barber.coupons.index')}}">
+                <i class="typcn typcn-document-text menu-icon"></i>
+                <span class="menu-title">Coupon Management
             </a>
         </li>
 

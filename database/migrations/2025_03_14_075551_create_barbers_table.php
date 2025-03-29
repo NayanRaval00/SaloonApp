@@ -27,6 +27,7 @@ return new class extends Migration
             $table->string('business_address')->nullable();
             $table->string('how_did_you_hear')->nullable();
             $table->boolean('agree_terms')->default(false);
+            $table->string('profile_image')->nullable();
             $table->string('password');
             $table->enum('status', [1, 0])->default(1);
             $table->timestamps();

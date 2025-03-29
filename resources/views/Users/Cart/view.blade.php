@@ -23,7 +23,7 @@
                 <thead>
                     <tr>
                         <th>Service</th>
-                        <th>Duration (hrs)</th>
+                        <th>Service Date</th>
                         <th>Price</th>
                         <th>Action</th>
                     </tr>
@@ -32,7 +32,7 @@
                     @foreach($cartItems as $item)
                     <tr>
                         <td>{{ $item->service->name }}</td>
-                        <td>{{ $item->duration }}</td>
+                        <td>{{ $item->date_time }}</td>
                         <td>₹{{ $item->price }}</td>
                         <td>
                             <a href="" class="btn btn-danger btn-sm">Remove</a>

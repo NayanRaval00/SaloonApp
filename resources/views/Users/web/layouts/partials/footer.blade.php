@@ -3,7 +3,7 @@
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem;">
       <!-- About Section -->
       <div>
-        <a href="index.html" class="footer-brand">
+        <a href="" class="footer-brand">
           <h1 class="text-white"><span>Shree</span>Radha Beauty</h1>
         </a>
         <p>Experience relaxation and rejuvenation at its finest. Visit us for personalized care and premium

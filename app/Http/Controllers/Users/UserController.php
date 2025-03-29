@@ -22,7 +22,7 @@ class UserController extends Controller
 
     public function listsServiceByBarber($barberId)
     {
-        $services = Service::with(['barber', 'category'])
+        $services = Service::with(['barber', 'category', 'slots'])
             ->where(['barber_id' => $barberId, 'status' => 1])
             ->paginate(9);
 

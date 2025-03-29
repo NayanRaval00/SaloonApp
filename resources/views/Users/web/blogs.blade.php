@@ -56,7 +56,7 @@
                                     <small><i class="fa fa-comments"></i> 15</small>
                                 </div>
                                 <p>Discover how regular spa treatments can improve your physical and mental well-being...</p>
-                                <a class="font-weight-bold btn btn-primary btn-sm" href="blog-details.html">Read More</a>
+                                <a class="font-weight-bold btn btn-primary btn-sm" href="">Read More</a>
                             </div>
                         </div>
                     </div>
@@ -71,7 +71,7 @@
                                     <small><i class="fa fa-comments"></i> 12</small>
                                 </div>
                                 <p>Learn about the best essential oils for relaxation and stress relief...</p>
-                                <a class="font-weight-bold btn btn-primary btn-sm" href="blog-details.html">Read More</a>
+                                <a class="font-weight-bold btn btn-primary btn-sm" href="">Read More</a>
                             </div>
                         </div>
                     </div>

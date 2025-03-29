@@ -18,6 +18,7 @@
                                 <th>Service Name</th>
                                 <th>Duration</th>
                                 <th>Date Time</th>
+                                <th>Slot Time</th>
                                 <th>Price</th>
                                 <th>Status</th>
                             </tr>
@@ -28,6 +29,7 @@
                                 <td>{{ $orderItem->service->name }}</td>
                                 <td>{{ $orderItem->duration }} mins</td>
                                 <td>{{ $orderItem->date_time }}</td>
+                                <td>{{ $orderItem->slot->slot_time }}</td>
                                 <td>₹{{ $orderItem->price }}</td>
                                 <td>{{ ucfirst($orderItem->order->status) }}</td>
                             </tr>

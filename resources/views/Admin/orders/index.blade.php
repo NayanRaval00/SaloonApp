@@ -16,7 +16,8 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Category Name</th>
+                                <th>Total Price</th>
+                                <th>User Name</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -25,6 +26,7 @@
                             <tr>
                                 <td>#{{ $order->id }}</td>
                                 <td>₹{{ $order->total_price }}</td>
+                                <td>{{ $order->user->name }}</td>
                                 <td>{{ ucfirst($order->status) }}</td>
                                 <td>
                                     @if($order->status == 'pending')

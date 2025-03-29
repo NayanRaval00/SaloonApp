@@ -30,7 +30,8 @@ class Barber extends Authenticatable
         'how_did_you_hear',
         'agree_terms',
         'password',
-        'status'
+        'status',
+        'profile_image'
     ];
 
     protected $casts = [
