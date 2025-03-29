@@ -45,6 +45,6 @@ class CartController extends Controller
         $userId = Auth::guard('web')->user()->id;
 
         $cartItems = Cart::with('service')->where('user_id', $userId)->get();
-        return view('Users.cart.view', compact('cartItems'));
+        return view('Users.Cart.view', compact('cartItems'));
     }
 }
