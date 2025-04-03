@@ -8,11 +8,20 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-    public function list()
+
+    public function list(Request $request)
     {
-        $categories = Category::paginate(10);
+        $query = Category::query();
+
+        if ($request->has('search') && !empty($request->search)) {
+            $query->where('name', 'like', '%' . $request->search . '%');
+        }
+
+        $categories = $query->paginate(10);
+
         return view('Barber.categories.list', compact('categories'));
     }
+
 
     // Show create category form
     public function create()

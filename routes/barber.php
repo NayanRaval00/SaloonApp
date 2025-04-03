@@ -6,6 +6,7 @@ use App\Http\Controllers\Barber\BarberController;
 use App\Http\Controllers\Barber\CategoryController;
 use App\Http\Controllers\Barber\CouponController;
 use App\Http\Controllers\Barber\ServiceController;
+use App\Http\Controllers\BarberOrderController;
 use App\Http\Controllers\Users\OrderController;
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('barber.login');
@@ -44,4 +45,9 @@ Route::middleware(['barber'])->group(function () {
     /**Barber Profile */
     Route::get('/barber/profile', [BarberController::class, 'edit'])->name('barber.profile.edit');
     Route::post('/barber/profile', [BarberController::class, 'update'])->name('barber.profile.update');
+
+
+    /**Chart */
+    Route::get('/orders/chart-data', [BarberOrderController::class, 'getBarberChartData']);
+
 });

@@ -51,14 +51,31 @@
                                         {{ $barber->status == 1 ? 'Active' : 'Inactive' }}
                                     </span>
                                 </td>
-                                <td>
-                                    <button class="btn btn-sm btn-primary update-status-btn"
-                                        data-id="{{ $barber->id }}"
-                                        data-status="{{ $barber->status }}">
-                                        Update Status
-                                    </button>
-                                    <a href="#" class="btn btn-sm btn-danger">Delete</a>
+                                <td class="text-center">
+                                    <div class="btn-group" role="group">
+                                        <button title="Show Bank Details" class="btn btn-info btn-xs show-account-details ml-2"
+                                            data-name="{{ $barber->name }}"
+                                            data-bank-name="{{ $barber->bank_name }}"
+                                            data-bank-account-number="{{ $barber->bank_account_number }}"
+                                            data-bank-account-holder-name="{{ $barber->bank_account_holder_name }}"
+                                            data-bank-address="{{ $barber->bank_address }}"
+                                            data-bank-ifsc-code="{{ $barber->bank_ifsc_code }}"
+                                            data-toggle="modal" data-target="#accountDetailsModal">
+                                            <i class="typcn typcn-home-outline"></i> <!-- Icon for better look -->
+                                        </button>
+
+                                        <button title="Update Status" class="btn btn-primary btn-xs update-status-btn ml-2"
+                                            data-id="{{ $barber->id }}"
+                                            data-status="{{ $barber->status }}">
+                                            <i class="  typcn typcn-map"></i> <!-- Status update icon -->
+                                        </button>
+
+                                        <a title="Delete" href="#" class="btn btn-danger btn-xs delete-barber">
+                                            <i class=" typcn typcn-delete"></i> <!-- Trash icon for delete -->
+                                        </a>
+                                    </div>
                                 </td>
+
                             </tr>
                             @empty
                             <tr>
@@ -77,6 +94,32 @@
         </div>
     </div>
 </div>
+
+<!-- Modal for Barber Bank Account Details -->
+<div class="modal fade" id="accountDetailsModal" tabindex="-1" role="dialog" aria-labelledby="accountDetailsModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="accountDetailsModalLabel">Bank Account Details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Name:</strong> <span id="modalBarberName"></span></p>
+                <p><strong>Bank Name:</strong> <span id="modalBankName"></span></p>
+                <p><strong>Account Number:</strong> <span id="modalBankAccountNumber"></span></p>
+                <p><strong>Account Holder Name:</strong> <span id="modalBankAccountHolderName"></span></p>
+                <p><strong>Bank Address:</strong> <span id="modalBankAddress"></span></p>
+                <p><strong>IFSC Code:</strong> <span id="modalBankIFSCCode"></span></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <!-- Modal for Status Update -->
 <div class="modal fade" id="statusModal" tabindex="-1" role="dialog" aria-labelledby="statusModalLabel"
@@ -145,4 +188,18 @@
         });
     });
 </script>
+
+<script>
+    $(document).ready(function() {
+        $('.show-account-details').on('click', function() {
+            $('#modalBarberName').text($(this).data('name'));
+            $('#modalBankName').text($(this).data('bank-name') || 'N/A');
+            $('#modalBankAccountNumber').text($(this).data('bank-account-number') || 'N/A');
+            $('#modalBankAccountHolderName').text($(this).data('bank-account-holder-name') || 'N/A');
+            $('#modalBankAddress').text($(this).data('bank-address') || 'N/A');
+            $('#modalBankIFSCCode').text($(this).data('bank-ifsc-code') || 'N/A');
+        });
+    });
+</script>
+
 @endpush

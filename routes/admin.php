@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\AdminOrderController;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\PartnerController;
@@ -50,4 +51,7 @@ Route::middleware(['admin'])->group(function () {
     /**Partner Management */
     Route::get('/partners', [PartnerController::class, 'index'])->name('admin.partners.list');
     Route::post('/partners/update-status', [PartnerController::class, 'updateStatus'])->name('admin.partners.updateStatus');
+
+    Route::get('/orders/chart-data', [AdminOrderController::class, 'getChartData']);
+
 });

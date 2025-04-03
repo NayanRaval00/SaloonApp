@@ -9,6 +9,26 @@
             <div class="card-body">
                 <h4 class="card-title">Category List</h4>
                 <p class="card-description">List of available categories.</p>
+                <form action="{{ route('barber.category.list') }}" method="get" class="mb-4">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <input type="text" name="search" id="search" class="form-control" 
+                                    placeholder="Search categories..." value="{{ request('search') }}">
+                                <div class="input-group-append">
+                                    <button type="submit" class="btn btn-success">
+                                        <i class="fas fa-search"></i> Search
+                                    </button>
+                                    <a href="{{ route('barber.category.list') }}" class="btn btn-danger">
+                                        <i class="fas fa-times"></i> Reset
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+
 
                 <div class="d-flex align-items-center justify-content-md-end">
                     <a href="{{ route('barber.category.create') }}" class="btn btn-info btn-rounded btn-fw">

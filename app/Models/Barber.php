@@ -31,7 +31,12 @@ class Barber extends Authenticatable
         'agree_terms',
         'password',
         'status',
-        'profile_image'
+        'profile_image',
+        'bank_name',
+        'bank_account_number',
+        'bank_account_holder_name',
+        'bank_address',
+        'bank_ifsc_code'
     ];
 
     protected $casts = [

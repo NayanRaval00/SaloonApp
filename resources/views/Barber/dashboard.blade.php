@@ -6,8 +6,8 @@
 <div class="content-wrapper">
   <div class="row">
     <div class="col-sm-6">
-      <h3 class="mb-0 font-weight-bold">Kenneth Osborne</h3>
-      <p>Your last login: 21h ago from newzealand.</p>
+      <h3 class="mb-0 font-weight-bold">{{ Auth::guard('barber')->user()->name }}</h3>
+
     </div>
     <div class="col-sm-6">
       <div class="d-flex align-items-center justify-content-md-end">
@@ -36,47 +36,79 @@
     </div>
   </div>
 
-  <div class="row  mt-3">
-
-    <div class="col-xl-4 d-flex grid-margin stretch-card">
+  <div class="row mt-3">
+    <div class="col-xl-12 grid-margin stretch-card">
       <div class="card">
         <div class="card-body">
-          <div class="d-flex flex-wrap justify-content-between">
-            <h4 class="card-title mb-3">Device stats</h4>
+          <h4 class="card-title">Orders Analytics</h4>
+
+          <div class="d-flex mb-3">
+            <select id="yearFilter" class="form-control mr-2">
+              @foreach(range(date('Y') - 5, date('Y')) as $year)
+              <option value="{{ $year }}" {{ $year == date('Y') ? 'selected' : '' }}>{{ $year }}</option>
+              @endforeach
+            </select>
+
+            <select id="monthFilter" class="form-control">
+              <option value="all">All Months</option>
+              @foreach(range(1, 12) as $month)
+              <option value="{{ $month }}" {{ $month == date('m') ? 'selected' : '' }}>{{ date('F', mktime(0, 0, 0, $month, 1)) }}</option>
+              @endforeach
+            </select>
           </div>
-          <div class="row">
-            <div class="col-12">
-              <div class="row">
-                <div class="col-sm-12">
-                  <div class="d-flex justify-content-between mb-4">
-                    <div>Uptime</div>
-                    <div class="text-muted">195 Days, 8 hours</div>
-                  </div>
-                  <div class="d-flex justify-content-between mb-4">
-                    <div>First Seen</div>
-                    <div class="text-muted">23 Sep 2019, 2.04PM</div>
-                  </div>
-                  <div class="d-flex justify-content-between mb-4">
-                    <div>Collected time</div>
-                    <div class="text-muted">23 Sep 2019, 2.04PM</div>
-                  </div>
-                  <div class="d-flex justify-content-between mb-4">
-                    <div>Memory space</div>
-                    <div class="text-muted">168.3GB</div>
-                  </div>
-                  <div class="progress progress-md mt-4">
-                    <div class="progress-bar bg-success" role="progressbar" style="width: 50%"
-                      aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+
+          <canvas id="ordersChart"></canvas>
         </div>
       </div>
     </div>
   </div>
-
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const ctx = document.getElementById('ordersChart').getContext('2d');
+    let ordersChart;
+
+    function fetchChartData(year, month) {
+      fetch(`/barber/orders/chart-data?year=${year}&month=${month}`)
+        .then(response => response.json())
+        .then(data => {
+          if (ordersChart) ordersChart.destroy();
+          ordersChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+              labels: data.labels,
+              datasets: [{
+                label: 'Orders',
+                data: data.orders,
+                backgroundColor: 'rgba(75, 192, 192, 0.6)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+              }]
+            },
+            options: {
+              responsive: true,
+              scales: {
+                y: {
+                  beginAtZero: true
+                }
+              }
+            }
+          });
+        });
+    }
+
+    document.getElementById('yearFilter').addEventListener('change', function() {
+      fetchChartData(this.value, document.getElementById('monthFilter').value);
+    });
+
+    document.getElementById('monthFilter').addEventListener('change', function() {
+      fetchChartData(document.getElementById('yearFilter').value, this.value);
+    });
+
+    fetchChartData(new Date().getFullYear(), new Date().getMonth() + 1);
+  });
+</script>
 
 @endsection
