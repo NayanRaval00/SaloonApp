@@ -48,8 +48,8 @@
                         <label for="serviceBarber">Barber</label>
                         <select class="form-control @error('barber_id') is-invalid @enderror" id="serviceBarber" name="barber_id">
                             <option value="">Select Barber</option>
-                            @foreach($categories as $Barber)
-                            <option value="{{ $Barber->id }}">{{ $Barber->name }}</option>
+                            @foreach($barbers as $barber)
+                            <option value="{{ $barber->id }}">{{ $barber->name }}</option>
                             @endforeach
                         </select>
                         @error('barber_id') <span class="text-danger">{{ $message }}</span> @enderror

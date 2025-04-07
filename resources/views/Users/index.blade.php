@@ -804,31 +804,42 @@
             @csrf
             <div class="row gy-4">
               <div class="col-md-6">
-                <input type="text" name="name" class="form-control" placeholder="Your Full Name" required>
+                <label for="name" class="form-label">Full Name</label>
+                <input type="text" id="name" name="name" class="form-control" placeholder="Your Full Name" required>
               </div>
               <div class="col-md-6">
-                <input type="email" class="form-control" name="email" placeholder="Your Email Address" required>
+                <label for="email" class="form-label">Email Address</label>
+                <input type="email" id="email" class="form-control" name="email" placeholder="Your Email Address" required>
               </div>
               <div class="col-md-6">
-                <input type="text" name="mobile_number" class="form-control" placeholder="Your Phone Number" required>
+                <label for="mobile_number" class="form-label">Phone Number</label>
+                <input type="text" id="mobile_number" name="mobile_number" class="form-control" placeholder="Your Phone Number" required>
               </div>
               <div class="col-md-6">
-                <input type="text" name="city" class="form-control" placeholder="Your City" required>
+                <label for="city" class="form-label">City</label>
+                <input type="text" id="city" name="city" class="form-control" placeholder="Your City" required>
               </div>
               <div class="col-md-6">
-                <input type="text" name="state" class="form-control" placeholder="Your State" required>
+                <label for="state" class="form-label">State</label>
+                <input type="text" id="state" name="state" class="form-control" placeholder="Your State" required>
               </div>
               <div class="col-md-6">
-                <input type="text" name="country" class="form-control" placeholder="Your Country" required>
+                <label for="country" class="form-label">Country</label>
+                <input type="text" id="country" name="country" class="form-control" placeholder="Your Country" required>
               </div>
               <div class="col-md-6">
-                <input type="password" name="password" class="form-control" placeholder="Your Password" required>
+                <label for="password" class="form-label">Password</label>
+                <input type="password" id="password" name="password" class="form-control" placeholder="Your Password" required>
               </div>
               <div class="col-md-6">
-                <input type="password" name="password_confirmation" class="form-control" placeholder="Confirm Password" required>
+                <label for="password_confirmation" class="form-label">Confirm Password</label>
+                <input type="password" id="password_confirmation" name="password_confirmation" class="form-control" placeholder="Confirm Password" required>
               </div>
               <div class="col-md-12 text-center">
                 <button type="submit" class="btn btn-primary">Register</button>
+                <div class="text-center mt-3">
+                  Already have an account? <a href="{{ route('user.web.login') }}" class="text-primary">Login</a>
+                </div>
               </div>
             </div>
           </form>
@@ -853,34 +864,46 @@
         @csrf
         <div class="row gy-4">
           <div class="col-md-6">
-            <input type="text" name="name" class="form-control" placeholder="Your Full Name" required>
+            <label for="name" class="form-label">Full Name</label>
+            <input type="text" id="name" name="name" class="form-control" placeholder="Your Full Name" required>
           </div>
           <div class="col-md-6">
-            <input type="email" class="form-control" name="email" placeholder="Your Email Address" required>
+            <label for="email" class="form-label">Email Address</label>
+            <input type="email" id="email" class="form-control" name="email" placeholder="Your Email Address" required>
           </div>
           <div class="col-md-6">
-            <input type="text" name="mobile_number" class="form-control" placeholder="Your Phone Number" required>
+            <label for="mobile_number" class="form-label">Phone Number</label>
+            <input type="text" id="mobile_number" name="mobile_number" class="form-control" placeholder="Your Phone Number" required>
           </div>
           <div class="col-md-6">
-            <input type="text" name="city" class="form-control" placeholder="Your City" required>
+            <label for="city" class="form-label">City</label>
+            <input type="text" id="city" name="city" class="form-control" placeholder="Your City" required>
           </div>
           <div class="col-md-6">
-            <input type="text" name="state" class="form-control" placeholder="Your State" required>
+            <label for="state" class="form-label">State</label>
+            <input type="text" id="state" name="state" class="form-control" placeholder="Your State" required>
           </div>
           <div class="col-md-6">
-            <input type="text" name="country" class="form-control" placeholder="Your Country" required>
+            <label for="country" class="form-label">Country</label>
+            <input type="text" id="country" name="country" class="form-control" placeholder="Your Country" required>
           </div>
           <div class="col-md-6">
-            <input type="password" name="password" class="form-control" placeholder="Your Password" required>
+            <label for="password" class="form-label">Password</label>
+            <input type="password" id="password" name="password" class="form-control" placeholder="Your Password" required>
           </div>
           <div class="col-md-6">
-            <input type="password" name="password_confirmation" class="form-control" placeholder="Confirm Password" required>
+            <label for="password_confirmation" class="form-label">Confirm Password</label>
+            <input type="password" id="password_confirmation" name="password_confirmation" class="form-control" placeholder="Confirm Password" required>
           </div>
           <div class="col-md-12 text-center">
             <button type="submit" class="btn btn-primary">Register</button>
+            <div class="text-center mt-3">
+              Already have an account? <a href="{{ route('user.web.login') }}" class="text-primary">Login</a>
+            </div>
           </div>
         </div>
       </form>
+
 
     </div>
   </div>

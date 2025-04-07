@@ -30,6 +30,10 @@ Route::middleware(['barber'])->group(function () {
     Route::get('/service-list', [ServiceController::class, 'list'])->name('barber.service.list');
     Route::get('/create-service', [ServiceController::class, 'create'])->name('barber.service.create');
     Route::post('/save-service', [ServiceController::class, 'save'])->name('barber.service.save');
+    Route::get('/edit-service/{id}', [ServiceController::class, 'edit'])->name('barber.service.edit');
+    Route::post('/update-service/{service}', [ServiceController::class, 'update'])->name('barber.service.update');
+    Route::delete('/barber/service/{id}', [ServiceController::class, 'destroy'])->name('barber.service.delete');
+
 
     /**Order Management */
     Route::get('/order-list', [OrderController::class, 'barberOrders'])->name('barber.order.list');

@@ -28,6 +28,7 @@
                                 <th>Price</th>
                                 <th>Time (mins)</th>
                                 <th>Status</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -44,6 +45,19 @@
                                     <span class="badge {{ $service->status ? 'badge-success' : 'badge-danger' }}">
                                         {{ $service->status ? 'Active' : 'Inactive' }}
                                     </span>
+                                </td>
+                                <td>
+                                    <a class="btn btn-sm btn-primary update-status-btn"
+                                        href="{{route('barber.service.edit',$service->id)}}">
+                                        Edit
+                                    </a>
+                                    <!-- Delete Button with Confirmation -->
+                                    <form action="{{ route('barber.service.delete', $service->id) }}" method="POST" class="d-inline delete-service-form">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-sm btn-danger show-confirm">Delete</button>
+                                    </form>
+
                                 </td>
                             </tr>
                             @empty
@@ -64,3 +78,15 @@
     </div>
 </div>
 @endsection
+@push('scripts')
+<script>
+    document.querySelectorAll('.delete-service-form').forEach(form => {
+        form.addEventListener('submit', function (e) {
+            const confirmed = confirm('Are you sure you want to delete this service?');
+            if (!confirmed) {
+                e.preventDefault();
+            }
+        });
+    });
+</script>
+@endpush

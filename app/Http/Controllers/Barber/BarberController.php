@@ -99,46 +99,45 @@ class BarberController extends Controller
     }
 
     public function update(Request $request)
-{
-    $barberId = Auth::guard('barber')->user()->id;
-    $barber = Barber::where('id', $barberId)->first();
+    {
+        $barberId = Auth::guard('barber')->user()->id;
+        $barber = Barber::where('id', $barberId)->first();
 
-    $request->validate([
-        'name' => 'required|string|max:255',
-        'saloon_name' => 'required|string|max:255',
-        'profile_image' => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
-        'password' => 'nullable|min:6|confirmed',
-        'bank_name' => 'nullable|string|max:255',
-        'bank_account_number' => 'nullable|numeric|digits_between:10,20|unique:barbers,bank_account_number,' . $barber->id,
-        'bank_account_holder_name' => 'nullable|string|max:255',
-        'bank_address' => 'nullable|string|max:255',
-        'bank_ifsc_code' => 'nullable|string|max:11',
-    ]);
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'saloon_name' => 'required|string|max:255',
+            'profile_image' => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
+            'password' => 'nullable|min:6|confirmed',
+            'bank_name' => 'nullable|string|max:255',
+            'bank_account_number' => 'nullable|numeric|digits_between:10,20|unique:barbers,bank_account_number,' . $barber->id,
+            'bank_account_holder_name' => 'nullable|string|max:255',
+            'bank_address' => 'nullable|string|max:255',
+            'bank_ifsc_code' => 'nullable|string|max:11',
+        ]);
 
-    $updateData = [
-        'name' => $request->name,
-        'saloon_name' => $request->saloon_name,
-        'bank_name' => $request->bank_name,
-        'bank_account_number' => $request->bank_account_number,
-        'bank_account_holder_name' => $request->bank_account_holder_name,
-        'bank_address' => $request->bank_address,
-        'bank_ifsc_code' => $request->bank_ifsc_code,
-    ];
+        $updateData = [
+            'name' => $request->name,
+            'saloon_name' => $request->saloon_name,
+            'bank_name' => $request->bank_name,
+            'bank_account_number' => $request->bank_account_number,
+            'bank_account_holder_name' => $request->bank_account_holder_name,
+            'bank_address' => $request->bank_address,
+            'bank_ifsc_code' => $request->bank_ifsc_code,
+        ];
 
-    if ($request->hasFile('profile_image')) {
-        if ($barber->profile_image) {
-            Storage::disk('public')->delete($barber->profile_image);
+        if ($request->hasFile('profile_image')) {
+            if ($barber->profile_image) {
+                Storage::disk('public')->delete($barber->profile_image);
+            }
+            $updateData['profile_image'] = $request->file('profile_image')->store('barbers', 'public');
         }
-        $updateData['profile_image'] = $request->file('profile_image')->store('barbers', 'public');
+
+        if ($request->filled('password')) {
+            $updateData['password'] = Hash::make($request->password);
+        }
+
+        $barber->update($updateData);
+
+        return redirect()->back()->with('success', 'Profile updated successfully!');
     }
-
-    if ($request->filled('password')) {
-        $updateData['password'] = Hash::make($request->password);
-    }
-
-    $barber->update($updateData);
-
-    return redirect()->back()->with('success', 'Profile updated successfully!');
-}
-
 }

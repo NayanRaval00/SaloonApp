@@ -72,6 +72,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            console.log('nayan');
+            
             const popup = document.getElementById('popup');
             const contactLink = document.getElementById('contact-link');
             const closeBtn = document.querySelector('.close-btn');
@@ -104,15 +106,15 @@
             });
 
             // Handle form submission
-            form.addEventListener('submit', function(e) {
-                e.preventDefault();
-                // Add your form submission logic here
-                console.log('Form submitted');
-                closePopup();
-            });
+            // form.addEventListener('submit', function(e) {
+            //     e.preventDefault();
+            //     // Add your form submission logic here
+            //     console.log('Form submitted');
+            //     closePopup();
+            // });
 
             // Open popup after 30 seconds
-            setTimeout(openPopup, 30000);
+            setTimeout(openPopup, 10000);
         });
     </script>
 

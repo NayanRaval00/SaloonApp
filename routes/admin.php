@@ -42,6 +42,9 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/service-list', [ServiceController::class, 'list'])->name('admin.service.list');
     Route::get('/create-service', [ServiceController::class, 'create'])->name('admin.service.create');
     Route::post('/save-service', [ServiceController::class, 'save'])->name('admin.service.save');
+    Route::get('/edit-service/{id}', [ServiceController::class, 'edit'])->name('admin.service.edit');
+    Route::post('/update-service/{service}', [ServiceController::class, 'update'])->name('admin.service.update');
+    Route::delete('/barber/service/{id}', [ServiceController::class, 'destroy'])->name('admin.service.delete');
 
     /**Order Management */
     Route::get('/order-list', [OrderController::class, 'adminOrders'])->name('admin.order.list');
@@ -53,5 +56,10 @@ Route::middleware(['admin'])->group(function () {
     Route::post('/partners/update-status', [PartnerController::class, 'updateStatus'])->name('admin.partners.updateStatus');
 
     Route::get('/orders/chart-data', [AdminOrderController::class, 'getChartData']);
+
+
+     /**Admin Profile */
+     Route::get('/admin/profile', [AdminController::class, 'edit'])->name('admin.profile.edit');
+     Route::post('/admin/profile', [AdminController::class, 'update'])->name('admin.profile.update');
 
 });
