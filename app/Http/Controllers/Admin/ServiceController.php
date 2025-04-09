@@ -105,7 +105,7 @@ class ServiceController extends Controller
             'barber_id' => $request->barber_id,
             'category_id' => $request->category_id,
             'price' => $request->price,
-            'time' => $request->time,
+            'sheet' => $request->sheet,
             'created_by' => Auth::guard('admin')->user()->id,
             'status' => $request->status,
         ];
