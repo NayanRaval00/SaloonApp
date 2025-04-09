@@ -1,6 +1,6 @@
 @extends('Admin.layouts.admin')
 
-@section('title', 'Barbers List')
+@section('title', 'Saloons List')
 
 @section('content')
 <div class="content-wrapper">
@@ -8,13 +8,13 @@
         <div class="card">
 
             <div class="card-body">
-                <h4 class="card-title">Barbers List</h4>
+                <h4 class="card-title">Saloons List</h4>
                 <p class="card-description">List of registered barbers.</p>
 
                 <div class="d-flex align-items-center justify-content-md-end">
                     <div class="pr-1 mb-3 mr-2 mb-xl-0">
 
-                        <a href="{{route('admin.barbers.create')}}" class="btn btn-info btn-rounded btn-fw">Create Barber</a>
+                        <a href="{{route('admin.barbers.create')}}" class="btn btn-info btn-rounded btn-fw">Create Saloon</a>
                     </div>
 
                 </div>

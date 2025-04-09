@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Users;
 use App\Http\Controllers\Controller;
 use App\Models\Barber;
 use App\Models\Service;
+use App\Models\UserWishLists;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -31,7 +33,13 @@ class UserController extends Controller
 
     public function userWebsite()
     {
-        return view('Users.web.index');
+        $services = Service::with(['barber', 'category', 'serviceSlots', 'slots'])->whereStatus(1)->get();
+
+        $userWishList = Auth::guard('web')->check()
+            ? UserWishLists::where('user_id', Auth::guard('web')->user()->id)->pluck('service_id')->toArray()
+            : [];
+
+        return view('Users.web.index', compact('services', 'userWishList'));
     }
 
     public function aboutUs()

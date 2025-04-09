@@ -72,9 +72,9 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="serviceTime">Time</label>
-                        <input class="form-control" type="time" name="time" value="{{ old('time', $service->time) }}">
-                        @error('time') <span class="text-danger">{{ $message }}</span> @enderror
+                        <label for="serviceTime">Sheet</label>
+                        <input class="form-control" type="sheet" name="sheet" value="{{ old('sheet', $service->sheet) }}">
+                        @error('sheet') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
 
                     <div class="form-group">

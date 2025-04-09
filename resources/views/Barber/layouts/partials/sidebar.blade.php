@@ -57,6 +57,18 @@
                 <span class="menu-title">Coupon Management
             </a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{route('best-offer-day.index')}}">
+                <i class="typcn typcn-document-text menu-icon"></i>
+                <span class="menu-title">Best Offers Management
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{route('barber.list.users')}}">
+                <i class="typcn typcn-document-text menu-icon"></i>
+                <span class="menu-title">Users Management
+            </a>
+        </li>
 
     </ul>
 </nav>

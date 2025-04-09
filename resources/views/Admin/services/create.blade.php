@@ -63,11 +63,12 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="serviceTime">Time</label>
-                        <input type="time" class="form-control @error('time') is-invalid @enderror"
-                            id="servicetime" name="time" value="{{ old('time') }}">
-                        @error('time') <span class="text-danger">{{ $message }}</span> @enderror
+                        <label for="serviceTime">Sheet</label>
+                        <input type="number" class="form-control @error('sheet') is-invalid @enderror"
+                            id="servicesheet" name="sheet" value="{{ old('sheet') }}">
+                        @error('sheet') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
+
                     <div class="form-group">
                         <label for="serviceSlot">Select Time Slots</label>
                         <select class="form-control @error('slot') is-invalid @enderror" id="serviceSlot" name="slot[]" multiple>

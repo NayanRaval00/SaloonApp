@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Barber;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\BarberRegisterRequest;
 use App\Models\Barber;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -139,5 +140,11 @@ class BarberController extends Controller
         $barber->update($updateData);
 
         return redirect()->back()->with('success', 'Profile updated successfully!');
+    }
+
+    public function listUsers(Request $request)
+    {
+        $users = User::paginate(10);
+        return view('Barber.users.list', compact('users'));
     }
 }

@@ -5,6 +5,7 @@ use App\Http\Controllers\Users\CartController;
 use App\Http\Controllers\Users\OrderController;
 use App\Http\Controllers\Users\PartnerController;
 use App\Http\Controllers\Users\UserController;
+use App\Http\Controllers\Users\UserWishListController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [UserController::class, 'home'])->name('users.home');
@@ -20,6 +21,9 @@ Route::middleware(['user'])->group(function () {
     Route::get('/order/{order}', [OrderController::class, 'show'])->name('order.details');
 
     Route::post('/logout', [AuthController::class, 'logout'])->name('user.logout');
+
+    Route::post('/wishlist/toggle', [UserWishListController::class, 'toggle'])->name('wishlist.toggle');
+    Route::get('/wishlist', [UserWishListController::class, 'index'])->name('user.wishlist');
 
 });
 

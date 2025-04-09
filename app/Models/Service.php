@@ -15,7 +15,7 @@ class Service extends Model
         'barber_id',
         'category_id',
         'price',
-        'time',
+        'sheet',
         'created_by',
         'status',
     ];

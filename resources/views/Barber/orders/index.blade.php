@@ -15,7 +15,9 @@
                     <table class="table table-bordered">
                         <thead>
                             <tr>
+                                <th>Order Number</th>
                                 <th>Service Name</th>
+                                <th>User Name</th>
                                 <th>Duration</th>
                                 <th>Date Time</th>
                                 <th>Slot Time</th>
@@ -26,12 +28,20 @@
                         <tbody>
                             @foreach($orders as $orderItem)
                             <tr>
+                                <td>#{{ $orderItem->order->id }}</td>
                                 <td>{{ $orderItem->service->name }}</td>
+                                <td>{{ $orderItem->order->user->name }}</td>
                                 <td>{{ $orderItem->duration }} mins</td>
                                 <td>{{ $orderItem->date_time }}</td>
                                 <td>{{ $orderItem->slot->slot_time }}</td>
                                 <td>₹{{ $orderItem->price }}</td>
-                                <td>{{ ucfirst($orderItem->order->status) }}</td>
+                                <td>
+                                    @if($orderItem->order->status=='pending')
+                                    <label class="badge badge-danger">{{ucfirst($orderItem->order->status)}}</label>
+                                    @else
+                                    <label class="badge badge-success">{{ucfirst($orderItem->order->status)}}</label>
+                                    @endif
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>

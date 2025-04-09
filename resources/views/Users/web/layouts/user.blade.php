@@ -26,7 +26,6 @@
     <link href="{{ asset('user/web/lib/animate/animate.min.css') }}" rel="stylesheet">
     <link href="{{ asset('user/web/lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
     <link href="{{ asset('user/web/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css') }}" rel="stylesheet" />
-
     <!-- Customized Bootstrap Stylesheet -->
     <link href="{{ asset('user/web/css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('user/web/css/services.css') }}" rel="stylesheet">

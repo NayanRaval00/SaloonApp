@@ -7,9 +7,9 @@
     <div class="col-12 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Create Barber</h4>
+                <h4 class="card-title">Create Saloon</h4>
                 <p class="card-description">
-                    Create Barber
+                    Create Saloon
                 </p>
                 <form method="POST" action="{{ route('admin.barbers.save') }}" enctype="multipart/form-data">
                     @csrf

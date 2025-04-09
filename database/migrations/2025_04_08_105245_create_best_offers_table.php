@@ -11,17 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('services', function (Blueprint $table) {
+        Schema::create('best_offers', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 255);
-            $table->string('image');
-            $table->text('description')->nullable();
-            $table->integer('barber_id');
-            $table->integer('category_id');
-            $table->boolean('price');
-            $table->integer('sheet')->nullable();
+            $table->string('name')->nullable();
+            $table->longText('description')->nullable();
+            $table->string('image')->nullable();
+            $table->string('discount')->nullable();
+            $table->dateTime('start_date');
+            $table->dateTime('end_date');
             $table->integer('created_by');
-            $table->enum('status', [1, 0])->default(0);
             $table->timestamps();
         });
     }
@@ -31,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('services');
+        Schema::dropIfExists('best_offers');
     }
 };

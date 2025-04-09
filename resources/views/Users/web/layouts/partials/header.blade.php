@@ -44,30 +44,7 @@
             <div class="navbar-nav m-auto py-0">
                 <a href="{{route('user.web.home')}}" class="nav-item nav-link active">Home</a>
                 <a href="{{route('user.web.about')}}" class="nav-item nav-link">About</a>
-                <div class="nav-item dropdown">
-                    <a href="{{route('users.saloons.list')}}" class="nav-link dropdown-toggle" data-toggle="dropdown">Services</a>
-                    <div class="dropdown-menu rounded-0 m-0">
-                        <!-- Women's Services Dropdown -->
-                        <div class="dropdown-item has-submenu">
-                            <a href="{{route('users.saloons.list')}}" class="submenu-trigger">Women's Salon & Spa</a>
-                            <div class="submenu">
-                                <a class="dropdown-item" href="">Salon for Women</a>
-                                <a class="dropdown-item" href="">Spa for Women</a>
-                                <a class="dropdown-item" href="">Hair Studio for Women</a>
-                                <a class="dropdown-item" href="">Makeup & Styling Studio</a>
-                            </div>
-                        </div>
-                        <!-- Men's Services Dropdown -->
-                        <div class="dropdown-item has-submenu">
-                            <a href="{{route('users.saloons.list')}}" class="submenu-trigger">Men's Salon & Massage</a>
-                            <div class="submenu">
-                                <a class="dropdown-item" href="">Salon for Men</a>
-                                <a class="dropdown-item" href="">Massage for Men</a>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <a href="{{route('users.saloons.list')}}" class="nav-item nav-link">Services</a>
                 <a href="{{route('user.web.blogs')}}" class="nav-item nav-link">Blogs</a>
                 <a href="{{route('user.web.portfolio')}}" class="nav-item nav-link">Portfolio</a>
                 <a href="{{route('user.web.partner')}}" class="nav-item nav-link">Become A Partner</a>
@@ -81,6 +58,9 @@
                     <!-- Women's Services Dropdown -->
                     <div class="dropdown-item has-submenu">
                         <a class="submenu-trigger" href="{{route('orders.list')}}"><i class="fa fa-cart-plus"></i>&nbsp; My Orders</a>
+                        <div class="submenu">
+                            <a class="submenu-trigger" href="{{ route('user.wishlist') }}"><i class="fa fa-shopping-cart"></i>&nbsp; My Wishlist</a>
+                        </div>
                         <div class="submenu">
                             <a class="submenu-trigger" href="{{route('cart.view')}}"><i class="fa fa-shopping-cart"></i>&nbsp; My Cart</a>
                         </div>

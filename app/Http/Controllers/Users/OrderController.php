@@ -65,7 +65,7 @@ class OrderController extends Controller
 
     public function barberOrders()
     {
-        $orders = OrderItem::with('slot')->whereHas('barber', function ($query) {
+        $orders = OrderItem::with('slot', 'order.user')->whereHas('barber', function ($query) {
             $query->where('id', Auth::guard('barber')->id());
         })->latest()->paginate(10);
 

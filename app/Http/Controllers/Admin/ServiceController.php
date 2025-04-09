@@ -39,7 +39,7 @@ class ServiceController extends Controller
             'barber_id' => 'required|exists:barbers,id',
             'category_id' => 'required|exists:categories,id',
             'price' => 'required|numeric|min:0',
-            'time' => 'required|date_format:H:i',
+            'sheet' => 'required|numeric|min:0',
             'status' => 'required|boolean',
             'slot' => 'required|array', // Ensures slot selection is required
             'slot.*' => 'exists:slots,id', // Ensures each selected slot ID exists in the service_slots table
@@ -93,7 +93,7 @@ class ServiceController extends Controller
             'category_id' => 'required|exists:categories,id',
             'price' => 'required|numeric|min:0',
             'barber_id' => 'required|exists:barbers,id',
-            'time' => 'required',
+            'sheet' => 'required',
             'status' => 'required|boolean',
             'slot' => 'required|array',
             'slot.*' => 'exists:slots,id',

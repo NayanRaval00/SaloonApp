@@ -4,6 +4,30 @@
 
 
 @section('content')
+@push('styles')
+<style>
+  .heart-icon {
+    color: white;
+    transition: all 0.3s ease;
+  }
+
+  .heart-icon.clicked {
+    color: #e3342f;
+    transform: scale(1.3);
+    text-shadow: 0 0 8px rgba(255, 0, 0, 0.8);
+  }
+
+  .z-10 {
+    z-index: 10;
+  }
+</style>
+@endpush
+@if(session('success'))
+<div class="alert alert-success text-center mt-2">
+  {{ session('success') }}
+</div>
+@endif
+
 <!-- Carousel Start -->
 <div class="container-fluid p-0 mb-5 pb-5">
   <div id="header-carousel" class="carousel slide carousel-fade" data-ride="carousel">
@@ -113,52 +137,36 @@
     </div>
   </div>
   <div class="owl-carousel service-carousel">
-    <!-- Spa Services -->
-    <div class="service-item position-relative">
-      <img class="img-fluid" src="{{ asset('user/web/img/service-1.jpg')}}" alt="Body Massage">
+    @foreach($services as $service)
+    <div class="service-item position-relative" style="overflow: hidden;">
+      <form action="{{ route('wishlist.toggle') }}" method="POST" class="position-absolute top-0 end-0 p-2 z-10">
+        @csrf
+        <input type="hidden" name="service_id" value="{{ $service->id }}">
+        <button type="submit" class="border-0 bg-transparent p-0">
+          <i class="fas fa-heart heart-icon {{ in_array($service->id, $userWishList) ? 'clicked' : '' }}"
+            style="font-size: 1.5rem; cursor: pointer;"></i>
+        </button>
+      </form>
+      {{-- Image --}}
+      @if($service->image != null)
+      <img class="img-fluid" src="{{ asset('storage/' . $service->image) }}" alt="Service">
+      @else
+      <img class="img-fluid" src="{{ asset('user/web/img/service-1.jpg') }}" alt="Service">
+      @endif
+
       <div class="service-text text-center">
-        <h4 class="text-white font-weight-medium px-3">Body Massage</h4>
-        <p class="text-white px-3 mb-3">Relax your body with a soothing and rejuvenating body massage.</p>
+
+        <h4 class="text-white font-weight-medium px-3">{{ $service->name }}</h4>
+        <p class="text-white px-3 mb-3">{{ substr($service->description, 0, 25) }}</p>
         <div class="w-100 bg-white text-center p-4">
-          <button class="btn btn-primary make-order" data-service="Body Massage" data-category="Spa">Make
-            Order</button>
+          <button class="btn btn-primary make-order" data-service="{{ $service->name }}" data-category="Spa">
+            Make Order
+          </button>
         </div>
       </div>
     </div>
-    <div class="service-item position-relative">
-      <img class="img-fluid" src="{{ asset('user/web/img/service-2.jpg')}}" alt="Stone Therapy">
-      <div class="service-text text-center">
-        <h4 class="text-white font-weight-medium px-3">Stone Therapy</h4>
-        <p class="text-white px-3 mb-3">Experience relaxation through our hot stone therapy session.</p>
-        <div class="w-100 bg-white text-center p-4">
-          <button class="btn btn-primary make-order" data-service="Stone Therapy" data-category="Spa">Make
-            Order</button>
-        </div>
-      </div>
-    </div>
-    <!-- Beauty Services -->
-    <div class="service-item position-relative">
-      <img class="img-fluid" src="{{ asset('user/web/img/service-3.jpg')}}" alt="Makeup Services">
-      <div class="service-text text-center">
-        <h4 class="text-white font-weight-medium px-3">Makeup Services</h4>
-        <p class="text-white px-3 mb-3">Get a professional makeup look for any occasion.</p>
-        <div class="w-100 bg-white text-center p-4">
-          <button class="btn btn-primary make-order" data-service="Makeup Services"
-            data-category="Beauty">Make Order</button>
-        </div>
-      </div>
-    </div>
-    <div class="service-item position-relative">
-      <img class="img-fluid" src="{{ asset('user/web/img/service-3.jpg')}}" alt="Hair Treatment">
-      <div class="service-text text-center">
-        <h4 class="text-white font-weight-medium px-3">Hair Treatment</h4>
-        <p class="text-white px-3 mb-3">Revitalize your hair with our specialized treatments.</p>
-        <div class="w-100 bg-white text-center p-4">
-          <button class="btn btn-primary make-order" data-service="Hair Treatment"
-            data-category="Beauty">Make Order</button>
-        </div>
-      </div>
-    </div>
+    @endforeach
+
   </div>
 </div>
 
@@ -168,7 +176,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="orderModalLabel">Make an Order</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
       </div>
       <div class="modal-body">
         <form id="orderForm">
@@ -598,3 +606,12 @@
 <!-- Testimonial End -->
 
 @endsection
+@push('scripts')
+<script>
+  document.querySelectorAll('.heart-icon').forEach(icon => {
+    icon.addEventListener('click', function() {
+      this.classList.toggle('clicked');
+    });
+  });
+</script>
+@endpush

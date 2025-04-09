@@ -43,7 +43,7 @@
         <li class="nav-item">
             <a class="nav-link" href="{{route('admin.barber.list')}}">
                 <i class="typcn  typcn typcn-user menu-icon"></i>
-                <span class="menu-title">Barber Management
+                <span class="menu-title">Saloon Management
             </a>
         </li>
         <li class="nav-item">

@@ -3,11 +3,13 @@
 use App\Http\Controllers\Barber\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Barber\BarberController;
+use App\Http\Controllers\Barber\BarberOrderController;
+use App\Http\Controllers\Barber\BestOffersController;
 use App\Http\Controllers\Barber\CategoryController;
 use App\Http\Controllers\Barber\CouponController;
 use App\Http\Controllers\Barber\ServiceController;
-use App\Http\Controllers\BarberOrderController;
 use App\Http\Controllers\Users\OrderController;
+use App\Models\BestOffers;
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('barber.login');
 Route::post('/login', [AuthController::class, 'login'])->name('barber.login.post');
@@ -53,5 +55,12 @@ Route::middleware(['barber'])->group(function () {
 
     /**Chart */
     Route::get('/orders/chart-data', [BarberOrderController::class, 'getBarberChartData']);
+    Route::post('/update-notification-count/{order_item_id}', [BarberOrderController::class, 'updateNotification'])->name('update-notification-count');
 
+    /**Best Offer Of The Day */
+    Route::resource('best-offer-day', BestOffersController::class);
+
+    /**User Management */
+    Route::get('list-users', [BarberController::class,'listUsers'])->name('barber.list.users');
+    
 });
