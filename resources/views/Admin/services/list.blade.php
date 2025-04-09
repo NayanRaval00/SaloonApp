@@ -26,7 +26,7 @@
                                 <th>Category</th>
                                 <th>Barber</th>
                                 <th>Price</th>
-                                <th>Time (mins)</th>
+                                <th>Sheet</th>
                                 <th>Status</th>
                                 <th>Action</th>
                             </tr>
@@ -40,7 +40,7 @@
                                 <td>{{ $service->category->name }}</td>
                                 <td>{{ $service->barber->name }}</td>
                                 <td>${{ number_format($service->price, 2) }}</td>
-                                <td>{{ $service->time }}</td>
+                                <td>{{ $service->sheet }}</td>
                                 <td>
                                     <span class="badge {{ $service->status ? 'badge-success' : 'badge-danger' }}">
                                         {{ $service->status ? 'Active' : 'Inactive' }}
