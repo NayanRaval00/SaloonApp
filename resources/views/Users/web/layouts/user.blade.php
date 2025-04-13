@@ -12,7 +12,7 @@
     <meta content="Free HTML Templates" name="description">
 
     <!-- Favicon -->
-    <link href="{{ asset('user/web/img/favicon.ico') }}" rel="icon">
+    <link href="{{ asset('user/web/img/logo.jpeg')}}" rel="icon">
 
 
     <!-- Google Web Fonts -->
@@ -29,6 +29,12 @@
     <!-- Customized Bootstrap Stylesheet -->
     <link href="{{ asset('user/web/css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('user/web/css/services.css') }}" rel="stylesheet">
+
+    <style>
+        .header_logo {
+            max-width: 100px;
+        }
+    </style>
 
     @stack('styles')
 </head>
