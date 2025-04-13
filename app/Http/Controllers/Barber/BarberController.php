@@ -21,7 +21,7 @@ class BarberController extends Controller
 
     public function createBarberPage()
     {
-        return view('admin.barbers.create');
+        return view('Admin.barbers.create');
     }
 
     public function create(BarberRegisterRequest $request)
