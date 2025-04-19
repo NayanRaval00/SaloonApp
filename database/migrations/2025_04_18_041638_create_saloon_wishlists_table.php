@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('saloon_wishlists', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->foreignId('saloon_id')->constrained()->onDelete('cascade');
+            $table->foreignId('user_id');
+            $table->foreignId('saloon_id');
             $table->timestamps();
             $table->unique(['user_id', 'saloon_id']);
 
