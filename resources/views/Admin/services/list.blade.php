@@ -37,7 +37,7 @@
                                 <td>{{ $services->firstItem() + $key }}</td>
                                 <td><img src="{{ asset('storage/' . $service->image) }}" width="50" height="50"></td>
                                 <td>{{ $service->name }}</td>
-                                <td>{{ $service->category->name }}</td>
+                                <td>{{ $service->category?$service->category->name:'-' }}</td>
                                 <td>{{ $service->barber->name }}</td>
                                 <td>${{ number_format($service->price, 2) }}</td>
                                 <td>{{ $service->sheet }}</td>
@@ -80,7 +80,7 @@
 @push('scripts')
 <script>
     document.querySelectorAll('.delete-service-form').forEach(form => {
-        form.addEventListener('submit', function (e) {
+        form.addEventListener('submit', function(e) {
             const confirmed = confirm('Are you sure you want to delete this service?');
             if (!confirmed) {
                 e.preventDefault();

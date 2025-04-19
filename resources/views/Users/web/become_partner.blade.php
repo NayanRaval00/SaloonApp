@@ -69,6 +69,9 @@
                         <div class="col-md-12">
                             <input type="submit" value="Register" class="btn btn-primary py-2 px-4 text-white">
                         </div>
+                        <div class="text-center mt-3">
+                            Already have an account? <a href="{{ route('barber.login') }}" class="text-primary">Login</a>
+                        </div>
                     </div>
 
 

@@ -1,13 +1,13 @@
 @extends('Users.web.layouts.user')
 
-@section('title', 'My Wishlist')
+@section('title', 'My Wishlist Services')
 
 @section('content')
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 <div class="jumbotron jumbotron-fluid bg-jumbotron" style="margin-bottom: 90px;">
     <div class="container text-center py-5">
-        <h3 class="text-white display-3 mb-4">My Wishlist</h3>
+        <h3 class="text-white display-3 mb-4">My Wishlist Services</h3>
     </div>
 </div>
 

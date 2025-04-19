@@ -61,21 +61,23 @@
                                             data-bank-address="{{ $barber->bank_address }}"
                                             data-bank-ifsc-code="{{ $barber->bank_ifsc_code }}"
                                             data-toggle="modal" data-target="#accountDetailsModal">
-                                            <i class="typcn typcn-home-outline"></i> <!-- Icon for better look -->
+                                            <i class="typcn typcn-home-outline"></i> 
                                         </button>
-
+                                        
                                         <button title="Update Status" class="btn btn-primary btn-xs update-status-btn ml-2"
                                             data-id="{{ $barber->id }}"
                                             data-status="{{ $barber->status }}">
-                                            <i class="  typcn typcn-map"></i> <!-- Status update icon -->
+                                            <i class="  typcn typcn-map"></i> 
                                         </button>
-
-                                        <a title="Delete" href="#" class="btn btn-danger btn-xs delete-barber">
-                                            <i class=" typcn typcn-delete"></i> <!-- Trash icon for delete -->
-                                        </a>
+                                        <form action="{{ route('admin.barber.destroy', $barber->id) }}" method="POST" class="delete-form">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="button" class="btn btn-sm btn-danger delete-btn">
+                                                <i class=" typcn typcn-delete"></i>
+                                            </button>
+                                        </form>
                                     </div>
                                 </td>
-
                             </tr>
                             @empty
                             <tr>
@@ -202,4 +204,19 @@
     });
 </script>
 
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const deleteButtons = document.querySelectorAll('.delete-btn');
+
+        deleteButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                if (confirm('Are you sure you want to delete this appointment message?')) {
+                    this.closest('form.delete-form').submit();
+                }
+            });
+        });
+    });
+</script>
 @endpush

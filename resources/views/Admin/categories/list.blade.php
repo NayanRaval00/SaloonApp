@@ -11,9 +11,14 @@
                 <p class="card-description">List of available categories.</p>
 
                 <div class="d-flex align-items-center justify-content-md-end">
+
+                    <a href="{{ route('admin.category.list') }}" class="btn btn-danger btn-rounded btn-fw mr-2">
+                        Reset
+                    </a>
                     <a href="{{ route('admin.category.create') }}" class="btn btn-info btn-rounded btn-fw">
                         Create Category
                     </a>
+
                 </div>
 
                 <div class="table-responsive pt-3">
@@ -30,13 +35,20 @@
                             <tr>
                                 <td>{{ $categories->firstItem() + $key }}</td>
                                 <td>{{ $category->name }}</td>
+
+
+
                                 <td>
-                                    <button class="btn btn-sm btn-primary update-status-btn"
-                                        data-id="{{ $category->id }}"
-                                        data-name="{{ $category->name }}">
+                                    <a class="btn btn-sm btn-primary update-status-btn"
+                                        href="{{route('admin.category.edit',$category->id)}}">
                                         Edit
-                                    </button>
-                                    <a href="#" class="btn btn-sm btn-danger">Delete</a>
+                                    </a>
+                                    <form action="{{ route('admin.category.delete', $category->id) }}" method="POST" class="d-inline delete-service-form">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-sm btn-danger show-confirm">Delete</button>
+                                    </form>
+
                                 </td>
                             </tr>
                             @empty
@@ -51,9 +63,27 @@
                 {{-- Pagination --}}
                 <div class="d-flex justify-content-center mt-3">
                     {{ $categories->links('pagination::bootstrap-4') }}
+
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+@push('scripts')
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const deleteButtons = document.querySelectorAll('.delete-btn');
+
+        deleteButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                if (confirm('Are you sure you want to delete this category?')) {
+                    this.closest('form.delete-form').submit();
+                }
+            });
+        });
+    });
+</script>
+@endpush
+
 @endsection

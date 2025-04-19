@@ -15,15 +15,16 @@
                 </div>
             </div>
             <div class="nav-search">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Type to search..." aria-label="search"
-                        aria-describedby="search">
-                    <div class="input-group-append">
-                        <span class="input-group-text" id="search">
-                            <i class="typcn typcn-zoom"></i>
-                        </span>
+            <form action="{{ route('barber.category.list') }}" method="GET">
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="search" placeholder="Type to search..." value="{{ request('search') }}">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="submit">
+                                <i class="typcn typcn-zoom"></i>
+                            </button>
+                        </div>
                     </div>
-                </div>
+                </form>
             </div>
             <p class="sidebar-menu-title">Dash menu</p>
         </li>

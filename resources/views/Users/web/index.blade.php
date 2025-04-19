@@ -1,9 +1,10 @@
 @extends('Users.web.layouts.user')
 
-@section('title', 'SPA Center - Beauty & Spa')
+@section('title', 'Radiant Beauty Studio')
 
 
 @section('content')
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
 @push('styles')
 <style>
   .heart-icon {
@@ -22,11 +23,7 @@
   }
 </style>
 @endpush
-@if(session('success'))
-<div class="alert alert-success text-center mt-2">
-  {{ session('success') }}
-</div>
-@endif
+
 
 <!-- Carousel Start -->
 <div class="container-fluid p-0 mb-5 pb-5">
@@ -159,8 +156,8 @@
         <h4 class="text-white font-weight-medium px-3">{{ $service->name }}</h4>
         <p class="text-white px-3 mb-3">{{ substr($service->description, 0, 25) }}</p>
         <div class="w-100 bg-white text-center p-4">
-          <button class="btn btn-primary make-order" data-service="{{ $service->name }}" data-category="Spa">
-            Make Order
+          <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#orderModal">
+            Contact Us
           </button>
         </div>
       </div>
@@ -175,42 +172,37 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="orderModalLabel">Make an Order</h5>
+        <h5 class="modal-title" id="orderModalLabel">Contact Us</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
       </div>
       <div class="modal-body">
-        <form id="orderForm">
-          <div class="mb-3">
-            <label for="customerName" class="form-label">Your Name</label>
-            <input type="text" class="form-control" id="customerName" placeholder="Enter your name"
-              required>
+        <form action="{{ route('user.contact.store') }}" method="POST" novalidate="novalidate">
+          @csrf
+          <div class="form-row">
+            <div class="col-sm-6 control-group">
+              <input type="text" class="form-control border-0 p-4" id="name" name="name" placeholder="Your Name"
+                required="required" data-validation-required-message="Please enter your name" />
+              <p class="help-block text-danger">@error('name') {{ $message }} @enderror</p>
+            </div>
+            <div class="col-sm-6 control-group">
+              <input type="email" class="form-control border-0 p-4" id="email" name="email" placeholder="Your Email"
+                required="required" data-validation-required-message="Please enter your email" />
+              <p class="help-block text-danger">@error('email') {{ $message }} @enderror</p>
+            </div>
           </div>
-          <div class="mb-3">
-            <label for="customerPhone" class="form-label">Your Phone</label>
-            <input type="tel" class="form-control" id="customerPhone"
-              placeholder="Enter your phone number" pattern="[6-9]{1}[0-9]{9}" required>
+          <div class="control-group">
+            <input type="text" class="form-control border-0 p-4" id="subject" name="subject" placeholder="Subject"
+              required="required" data-validation-required-message="Please enter a subject" />
+            <p class="help-block text-danger">@error('subject') {{ $message }} @enderror</p>
           </div>
-          <div class="mb-3">
-            <label for="serviceCategory" class="form-label">Category</label>
-            <input type="text" class="form-control" id="serviceCategory" readonly>
+          <div class="control-group">
+            <textarea class="form-control border-0 py-3 px-4" rows="3" id="message" name="message" placeholder="Message"
+              required="required" data-validation-required-message="Please enter your message"></textarea>
+            <p class="help-block text-danger">@error('message') {{ $message }} @enderror</p>
           </div>
-          <div class="mb-3">
-            <label for="serviceName" class="form-label">Service</label>
-            <input type="text" class="form-control" id="serviceName" readonly>
+          <div>
+            <button class="btn btn-primary py-3 px-4" type="submit">Send Message</button>
           </div>
-          <div class="mb-3">
-            <label for="preferredDate" class="form-label">Preferred Date</label>
-            <input type="date" class="form-control" id="preferredDate" required>
-          </div>
-          <div class="mb-3">
-            <label for="preferredLocation" class="form-label">Preferred Location</label>
-            <select class="form-select" id="preferredLocation" required>
-              <option value="Downtown">Downtown</option>
-              <option value="City Center">City Center</option>
-              <option value="Uptown">Uptown</option>
-            </select>
-          </div>
-          <button type="submit" class="btn btn-primary w-100">Submit Order</button>
         </form>
       </div>
     </div>
@@ -220,68 +212,55 @@
   <div class="col-lg-6 py-5">
     <div class="p-5 my-5" style="background: rgba(33, 30, 28, 0.7);">
       <h1 class="text-white text-center mb-4">Make Appointment</h1>
-      <form>
+      <form method="POST" action="{{ route('appointments.store') }}">
+        @csrf
         <div class="form-row">
-          <div class="col-sm-6">
-            <div class="form-group">
-              <input type="text" class="form-control bg-transparent p-4" placeholder="Your Name"
-                required="required" />
-            </div>
+          <div class="col-sm-6 control-group">
+            <input type="text" class="form-control border-1 bg-transparent p-4" name="name" id="name" placeholder="Your Name"
+              required="required" data-validation-required-message="Please enter your name" />
+            <p class="help-block text-danger"></p>
           </div>
-          <div class="col-sm-6">
-            <div class="form-group">
-              <input type="tel" class="form-control bg-transparent p-4"
-                placeholder="Your Phone Number" pattern="[6-9]{1}[0-9]{9}" maxlength="10"
-                required="required" />
-            </div>
+          <div class="col-sm-6 control-group">
+            <input type="email" name="email" class="form-control border-1 bg-transparent p-4" id="email" placeholder="Your Email"
+              required="required" data-validation-required-message="Please enter your email" />
+            <p class="help-block text-danger"></p>
           </div>
         </div>
-        <div class="form-row">
-          <div class="col-sm-6">
-            <div class="form-group">
-              <div class="date" id="date" data-target-input="nearest">
-                <input type="text" class="form-control bg-transparent p-4 datetimepicker-input"
-                  placeholder="Select Date" data-target="#date" data-toggle="datetimepicker" />
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <div class="form-group">
-              <div class="time" id="time" data-target-input="nearest">
-                <input type="text" class="form-control bg-transparent p-4 datetimepicker-input"
-                  placeholder="Select Time" data-target="#time" data-toggle="datetimepicker" />
-              </div>
-            </div>
+        <div class="control-group">
+          <input type="text" name="subject" class="form-control bg-transparent border-1 p-4" id="subject" placeholder="Subject"
+            required="required" data-validation-required-message="Please enter a subject" />
+          <p class="help-block text-danger"></p>
+        </div>
+        <div class="form-group">
+          <div class="time" id="time" data-target-input="nearest">
+            <input type="date" name="appointment_time" class="form-control bg-transparent p-4"
+              placeholder="Select Time" />
           </div>
         </div>
-        <div class="form-row">
-          <div class="col-sm-6">
-            <div class="form-group">
-              <select class="custom-select bg-transparent px-4" style="height: 47px;">
-                <option selected>Select A Service</option>
-                <option value="1">Service 1</option>
-                <option value="2">Service 2</option>
-                <option value="3">Service 3</option>
-              </select>
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <div class="form-group">
-              <select class="custom-select bg-transparent px-4" style="height: 47px;">
-                <option selected>Select A Location</option>
-                <option value="1">Location 1</option>
-                <option value="2">Location 2</option>
-                <option value="3">Location 3</option>
-              </select>
-            </div>
+        <div class="control-group">
+          <div class="form-group">
+            <select name="salon" class="custom-select bg-transparent px-4" style="height: 47px;">
+              <option selected>Select A Saloon</option>
+              @foreach($salons as $salon)
+              <option value="{{$salon->id}}">{{$salon->name}} - {{$salon->city}}</option>
+              @endforeach
+            </select>
           </div>
         </div>
-        <div class="form-row">
-          <div class="col-12 text-center">
-            <button class="btn btn-primary" type="submit" style="height: 47px; width: 100%;">Make
-              Appointment</button>
-          </div>
+        <div class="form-group">
+          <input name="location" type="text" class="form-control bg-transparent border-1 p-4" id="location" placeholder="location"
+            required="required" data-validation-required-message="Please enter a location" />
         </div>
+        <div class="control-group">
+          <textarea name="message" class="form-control border-1 py-3 px-4 bg-transparent" rows="3" id="message" placeholder="Message"
+            required="required"
+            data-validation-required-message="Please enter your message"></textarea>
+          <p class="help-block text-danger"></p>
+        </div>
+        <div>
+          <button class="btn btn-primary py-3 px-4" type="submit">
+            Make Appointment
+          </button>
       </form>
     </div>
   </div>

@@ -101,7 +101,7 @@
                     </div>
 
                     <button type="submit" class="btn btn-primary">Update Service</button>
-                    <a href="{{ route('barber.service.list') }}" class="btn btn-secondary">Cancel</a>
+                    <a href="{{ route('admin.service.list') }}" class="btn btn-secondary">Cancel</a>
                 </form>
             </div>
         </div>

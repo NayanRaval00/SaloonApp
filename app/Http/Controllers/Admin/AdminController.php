@@ -9,6 +9,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
@@ -64,6 +65,75 @@ class AdminController extends Controller
         $admin->update($updateData);
 
         return redirect()->back()->with('success', 'Profile updated successfully!');
+    }
 
+    public function destroyUser($id)
+    {
+        $contact = User::findOrFail($id);
+        $contact->delete();
+
+        return redirect()->route('admin.user.list')
+            ->with('success', 'User deleted successfully');
+    }
+
+    public function destroyBarber($id)
+    {
+        $contact = Barber::findOrFail($id);
+        $contact->delete();
+
+        return redirect()->route('admin.barber.list')
+            ->with('success', 'Saloon deleted successfully');
+    }
+
+
+    public function downloadUsers()
+    {
+        $users = User::all();
+
+        $csvHeader = [
+            'ID',
+            'Name',
+            'Email',
+            'Mobile Number',
+            'Country',
+            'State',
+            'City',
+            'Status',
+            'Created At'
+        ];
+
+        $csvData = [];
+        foreach ($users as $user) {
+            $csvData[] = [
+                $user->id,
+                $user->name,
+                $user->email,
+                $user->mobile_number,
+                $user->country,
+                $user->state,
+                $user->city,
+                $user->status == 1 ? 'Active' : 'Inactive',
+                $user->created_at->format('Y-m-d H:i:s'),
+            ];
+        }
+
+        // Create CSV content
+        $filename = 'users_' . now()->format('Ymd_His') . '.csv';
+        $handle = fopen('php://temp', 'r+');
+        fputcsv($handle, $csvHeader);
+
+        foreach ($csvData as $row) {
+            fputcsv($handle, $row);
+        }
+
+        rewind($handle);
+        $csvContent = stream_get_contents($handle);
+        fclose($handle);
+
+        // Return response with CSV headers
+        return Response::make($csvContent, 200, [
+            'Content-Type' => 'text/csv',
+            'Content-Disposition' => "attachment; filename=$filename",
+        ]);
     }
 }

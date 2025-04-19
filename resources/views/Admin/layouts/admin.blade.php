@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="{{ asset('admin/vendors/css/vendor.bundle.base.css') }}">
 
     <link rel="stylesheet" href="{{ asset('admin/css/vertical-layout-light/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
     <!-- endinject -->
 
     @stack('styles')
@@ -84,6 +86,32 @@
 
     <!-- Load Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            @if($errors->any())
+            @foreach($errors->all() as $error)
+            toastr.error("{{ $error }}");
+            @endforeach
+            @endif
+
+            @if(session('success'))
+            toastr.success("{{ session('success') }}");
+            @endif
+
+            @if(session('error'))
+            toastr.error("{{ session('error') }}");
+            @endif
+
+            @if(session('warning'))
+            toastr.warning("{{ session('warning') }}");
+            @endif
+
+            @if(session('info'))
+            toastr.info("{{ session('info') }}");
+            @endif
+        });
+    </script>
     @stack('scripts')
 </body>
 

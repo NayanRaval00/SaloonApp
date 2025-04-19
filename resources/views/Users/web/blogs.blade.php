@@ -1,6 +1,6 @@
 @extends('Users.web.layouts.user')
 
-@section('title', 'SPA Center - Beauty & Spa')
+@section('title', 'Radiant Beauty Studio')
 
 
 @section('content')

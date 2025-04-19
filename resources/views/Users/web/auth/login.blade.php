@@ -48,7 +48,7 @@
                        
 
                         <div>
-                            <button class="btn btn-primary py-3 px-4" type="submit" id="sendMessageButton">Submit</button>
+                            <button class="btn btn-primary py-3 px-4" type="submit">Submit</button>
                         </div>
                         <div class="text-center mt-3">
                             Already Don't have an account? <a href="{{ route('user.web.register') }}" class="text-primary">Register</a>

@@ -11,13 +11,10 @@
         <p>Experience relaxation and rejuvenation at its finest. Visit us for personalized care and premium
           services designed to elevate your well-being.</p>
         <ul class="contact-list">
-          <li><i class="fas fa-phone-alt"></i>+91 9711162310</li>
-          <li><i class="fas fa-phone-alt"></i>+91 8076068507</li>
-          <li><i class="fas fa-phone-alt"></i>Customer Support Number +91 8860663001</li>
-          <li><i class="fas fa-phone-alt"></i>Company Customer Support number 0120-22030592</li>
+          <li><i class="fas fa-phone-alt"></i>+91 9711162310, +91 8076068507</li>
+          <li><i class="fas fa-phone-alt"></i>Customer Support Number +91 8860663001, 0120-22030592</li>
           <li><i class="fas fa-map-marker-alt"></i>B-161 First Flower , Shalimar Gardan , Ghaziabad -U.P. ,201005</li>
-          <li><i class="fas fa-envelope"></i>infoempiregroup2@gmail.com</li>
-          <li><i class="fas fa-envelope"></i>customercare.empiregroup@gmail.com</li>
+          <li><i class="fas fa-envelope"></i>customercare.empiregroup@gmail.com, infoempiregroup2@gmail.com</li>
         </ul>
         <div class="social-links">
           <a href="#" class="social-btn"><i class="fab fa-twitter"></i></a>
@@ -44,10 +41,10 @@
           Links</h5>
 
         <ul class="quick-links">
-          <li><a href="#"><i class="fas fa-angle-right"></i>About Us</a></li>
-          <li><a href="#"><i class="fas fa-angle-right"></i>Our Services</a></li>
-          <li><a href="#"><i class="fas fa-angle-right"></i>Contact Us</a></li>
-          <li><a href="#"><i class="fas fa-angle-right"></i>FAQs</a></li>
+          <li><a href="{{route('user.web.about')}}"><i class="fas fa-angle-right"></i>About Us</a></li>
+          <li><a href="{{route('users.saloons.list')}}"><i class="fas fa-angle-right"></i>Our Services</a></li>
+          <li><a href="{{route('user.web.contact-us')}}"><i class="fas fa-angle-right"></i>Contact Us</a></li>
+          <li><a href="{{route('user.term-and-condition')}}"><i class="fas fa-angle-right"></i>Terms & Conditions</a></li>
         </ul>
       </div>
     </div>

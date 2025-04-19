@@ -2,9 +2,9 @@
     <div class="row py-2 px-lg-5">
         <div class="col-lg-6 text-left mb-2 mb-lg-0">
             <div class="d-inline-flex align-items-center">
-                <small><i class="fa fa-phone-alt mr-2"></i>+012 345 6789</small>
+                <small><i class="fa fa-phone-alt mr-2"></i>+91 9711162310</small>
                 <small class="px-3">|</small>
-                <small><i class="fa fa-envelope mr-2"></i>info@example.com</small>
+                <small><i class="fa fa-envelope mr-2"></i>infoempiregroup2@gmail.com</small>
             </div>
         </div>
         <div class="col-lg-6 text-right">
@@ -36,7 +36,7 @@
     <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0 px-lg-5">
         <a href="{{route('user.web.home')}}" class="navbar-brand ml-lg-3">
             <!-- <h1 class="m-0 text-primary"><span class="text-dark">SPA</span> Center</h1> -->
-             <img src="{{ asset('user/web/img/logo.jpeg')}}" alt="image" srcset="" class="header_logo">
+            <img src="{{ asset('user/web/img/logo.jpeg')}}" alt="image" srcset="" class="header_logo">
         </a>
         <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
@@ -49,21 +49,27 @@
                 <a href="{{route('user.web.blogs')}}" class="nav-item nav-link">Blogs</a>
                 <a href="{{route('user.web.portfolio')}}" class="nav-item nav-link">Portfolio</a>
                 <a href="{{route('user.web.partner')}}" class="nav-item nav-link">Become A Partner</a>
+                <a href="{{route('user.term-and-condition')}}" class="nav-item nav-link">Terms & Conditions</a>
                 <a href="{{route('user.web.contact-us')}}" class="nav-item nav-link">Contact</a>
             </div>
             @if(Auth::guard('web')->user() != null)
 
             <div class="nav-item dropdown">
-                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><i class="fab fa fa-user"></i> &nbsp;{{ Auth::guard('web')->user()->name }}</a>
+                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><i class="fab fa fa-user"></i> {{ Auth::guard('web')->user()->name }}</a>
                 <div class="dropdown-menu rounded-0 m-0">
                     <!-- Women's Services Dropdown -->
                     <div class="dropdown-item has-submenu">
-                        <a class="submenu-trigger" href="{{route('orders.list')}}"><i class="fa fa-cart-plus"></i>&nbsp; My Orders</a>
+                        <a class="submenu-trigger" href="{{route('orders.list')}}"><i class="fa fa-cart-plus"></i> My Orders</a>
                         <div class="submenu">
-                            <a class="submenu-trigger" href="{{ route('user.wishlist') }}"><i class="fa fa-shopping-cart"></i>&nbsp; My Wishlist</a>
+                            <a class="submenu-trigger" href="{{ route('user.wishlist') }}">
+                                <i class="fa fa-shopping-cart"></i> My Service <br> Wishlist</a>
                         </div>
                         <div class="submenu">
-                            <a class="submenu-trigger" href="{{route('cart.view')}}"><i class="fa fa-shopping-cart"></i>&nbsp; My Cart</a>
+                            <a class="submenu-trigger" href="{{ route('wishlist.saloon.index') }}">
+                                <i class="fa fa-shopping-cart"></i> My Saloon <br> Wishlist</a>
+                        </div>
+                        <div class="submenu">
+                            <a class="submenu-trigger" href="{{route('cart.view')}}"><i class="fa fa-shopping-cart"></i> My Cart</a>
                         </div>
                         <div class="submenu">
                             <form id="logout-form" action="{{ route('user.logout') }}" method="POST" style="display: none;">

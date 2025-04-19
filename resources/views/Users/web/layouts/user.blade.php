@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>@yield('title', 'SPA Center - Beauty & Spa')</title>
+    <title>@yield('title', 'Radiant Beauty Studio')</title>
     <!-- Fonts and Global Styles -->
 
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -29,6 +29,7 @@
     <!-- Customized Bootstrap Stylesheet -->
     <link href="{{ asset('user/web/css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('user/web/css/services.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
     <style>
         .header_logo {
@@ -70,34 +71,8 @@
 
     <!-- Template Javascript -->
     <script src="{{ asset('user/web/js/main.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            // Open modal on "Make Order" click
-            document.querySelectorAll(".make-order").forEach(button => {
-                button.addEventListener("click", () => {
-                    const service = button.getAttribute("data-service");
-                    const category = button.getAttribute("data-category");
-                    document.getElementById("orderModalLabel").innerText = `Order: ${service}`;
-                    document.getElementById("serviceCategory").value = category;
-                    document.getElementById("serviceName").value = service;
-                    new bootstrap.Modal(document.getElementById("orderModal")).show();
-                });
-            });
-
-            // Handle form submission
-            document.getElementById("orderForm").addEventListener("submit", (e) => {
-                e.preventDefault();
-                const formData = new FormData(e.target);
-                const orderDetails = Object.fromEntries(formData.entries());
-                alert(`Order placed successfully for ${orderDetails["serviceName"]}`);
-                // Optionally add API call logic here
-                document.getElementById("orderForm").reset();
-                bootstrap.Modal.getInstance(document.getElementById("orderModal")).hide();
-            });
-        });
-    </script>
-    <!-- JavaScript to Handle Radio Button Selection -->
     <script>
         // Get all radio buttons
         const scheduleRadios = document.querySelectorAll('input[name="schedule"]');
@@ -137,7 +112,31 @@
         });
     </script>
 
+    <script>
+        $(document).ready(function() {
+            @if($errors->any())
+            @foreach($errors->all() as $error)
+            toastr.error("{{ $error }}");
+            @endforeach
+            @endif
 
+            @if(session('success'))
+            toastr.success("{{ session('success') }}");
+            @endif
+
+            @if(session('error'))
+            toastr.error("{{ session('error') }}");
+            @endif
+
+            @if(session('warning'))
+            toastr.warning("{{ session('warning') }}");
+            @endif
+
+            @if(session('info'))
+            toastr.info("{{ session('info') }}");
+            @endif
+        });
+    </script>
     @stack('scripts')
 </body>
 

@@ -56,7 +56,7 @@ class AuthController extends Controller
         }
 
         if (Auth::guard('web')->attempt($credentials)) {
-            return redirect()->route('user.web.home');
+            return redirect()->route('user.web.home')->with('success','Login Successfully!');
         }
 
         return back()->withErrors(['email' => 'Invalid login credentials.']);
@@ -65,6 +65,6 @@ class AuthController extends Controller
     public function logout()
     {
         Auth::guard('web')->logout();
-        return redirect()->route('user.web.login');
+        return redirect()->route('user.web.login')->with('success','Logout Successfully!');
     }
 }

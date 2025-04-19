@@ -38,8 +38,10 @@ class UserController extends Controller
         $userWishList = Auth::guard('web')->check()
             ? UserWishLists::where('user_id', Auth::guard('web')->user()->id)->pluck('service_id')->toArray()
             : [];
+            
+        $salons = Barber::where('status', 1)->get();
 
-        return view('Users.web.index', compact('services', 'userWishList'));
+        return view('Users.web.index', compact('services', 'userWishList', 'salons'));
     }
 
     public function aboutUs()

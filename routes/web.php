@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\Admin\AppointmentsController;
+use App\Http\Controllers\SaloonWishlistController;
 use App\Http\Controllers\Users\AuthController;
 use App\Http\Controllers\Users\CartController;
+use App\Http\Controllers\Users\ContactUsController;
 use App\Http\Controllers\Users\OrderController;
 use App\Http\Controllers\Users\PartnerController;
 use App\Http\Controllers\Users\UserController;
@@ -24,6 +27,9 @@ Route::middleware(['user'])->group(function () {
 
     Route::post('/wishlist/toggle', [UserWishListController::class, 'toggle'])->name('wishlist.toggle');
     Route::get('/wishlist', [UserWishListController::class, 'index'])->name('user.wishlist');
+    Route::post('/wishlist', [SaloonWishlistController::class, 'store'])->name('wishlist.store');
+    Route::get('/my-saloon-wishlist', [SaloonWishlistController::class, 'index'])->name('wishlist.saloon.index');
+
 
 });
 
@@ -44,4 +50,9 @@ Route::group(['prefix' => 'user'], function () {
 
     Route::get('/list-saloons', [UserController::class, 'listSaloons'])->name('users.saloons.list');
     Route::get('/list-service/{barber_id}', [UserController::class, 'listsServiceByBarber'])->name('users.service.list');
+
+    Route::post('/appointments', [AppointmentsController::class, 'store'])->name('appointments.store');
+
+    Route::post('/contact', [ContactUsController::class, 'store'])->name('user.contact.store');
+    Route::get('/term-and-condition', [ContactUsController::class, 'termAndCondition'])->name('user.term-and-condition');
 });
