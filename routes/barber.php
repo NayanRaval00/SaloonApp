@@ -26,6 +26,9 @@ Route::middleware(['barber'])->group(function () {
     Route::get('/category-list', [CategoryController::class, 'list'])->name('barber.category.list');
     Route::get('/create-category', [CategoryController::class, 'create'])->name('barber.category.create');
     Route::post('/save-category', [CategoryController::class, 'save'])->name('barber.category.save');
+    Route::get('/edit-category/{id}', [CategoryController::class, 'edit'])->name('barber.category.edit');
+    Route::post('/update-category', [CategoryController::class, 'update'])->name('barber.category.update');
+    Route::delete('/category/{id}', [CategoryController::class, 'delete'])->name('barber.category.delete');
 
 
     /**Service  Management*/

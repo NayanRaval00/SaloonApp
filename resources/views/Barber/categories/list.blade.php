@@ -13,7 +13,7 @@
                     <div class="row">
                         <div class="col-md-4">
                             <div class="input-group">
-                                <input type="text" name="search" id="search" class="form-control" 
+                                <input type="text" name="search" id="search" class="form-control"
                                     placeholder="Search categories..." value="{{ request('search') }}">
                                 <div class="input-group-append">
                                     <button type="submit" class="btn btn-success">
@@ -51,12 +51,16 @@
                                 <td>{{ $categories->firstItem() + $key }}</td>
                                 <td>{{ $category->name }}</td>
                                 <td>
-                                    <button class="btn btn-sm btn-primary update-status-btn"
+                                    <a href="{{route('barber.category.edit',$category->id)}}" class="btn btn-sm btn-primary update-status-btn"
                                         data-id="{{ $category->id }}"
                                         data-name="{{ $category->name }}">
                                         Edit
-                                    </button>
-                                    <a href="#" class="btn btn-sm btn-danger">Delete</a>
+                                    </a>
+                                    <form action="{{ route('barber.category.delete', $category->id) }}" method="POST" class="d-inline delete-service-form">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-sm btn-danger show-confirm">Delete</button>
+                                    </form>
                                 </td>
                             </tr>
                             @empty

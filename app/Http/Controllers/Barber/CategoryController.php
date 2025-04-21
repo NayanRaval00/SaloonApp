@@ -42,4 +42,42 @@ class CategoryController extends Controller
 
         return redirect()->route('barber.category.list')->with('success', 'Category created successfully.');
     }
+
+    public function update(Request $request)
+    {
+        $request->validate([
+            'id' => 'required',
+            'name' => 'required|string|max:255',
+        ]);
+
+        $category = Category::where('id', $request->id)->first();
+
+        if (!$category) {
+            return redirect()->back()->with('error', 'Category not found!');
+        }
+
+
+        $category->update([
+            'name' => $request->name,
+        ]);
+        return redirect()->route('barber.category.list')->with('success', 'Category updated successfully.');
+    }
+
+    public function edit($id)
+    {
+        $category = Category::where('id', $id)->first();
+        if (!$category) {
+            return redirect()->back()->with('error', 'something went wrong');
+        }
+        return view('Barber.categories.edit', compact('category'));
+    }
+
+    public function delete($id)
+    {
+        $contact = Category::findOrFail($id);
+        $contact->delete();
+
+        return redirect()->route('barber.category.list')
+            ->with('success', 'Category deleted successfully');
+    }
 }
