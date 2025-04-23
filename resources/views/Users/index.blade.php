@@ -1,6 +1,6 @@
 @extends('Users.layouts.user')
 
-@section('title', 'Barber Users')
+@section('title', 'Radiant beauty studio')
 
 
 @section('content')
@@ -13,7 +13,7 @@
     <img src="{{ asset('user/assets/img/hero-bg.jpg')}}" alt="" data-aos="fade-in">
 
     <div class="container d-flex flex-column align-items-center">
-      <h2 data-aos="fade-up" data-aos-delay="100">RELAX. REVIVE. RADIATE.</h2>
+      <h2 data-aos="fade-up" data-aos-delay="100">Radiant beauty studio.</h2>
       <p data-aos="fade-up" data-aos-delay="200">We are a team of beauty experts dedicated to enhancing your natural
         glow.</p>
       <div class="d-flex mt-4" data-aos="fade-up" data-aos-delay="300">

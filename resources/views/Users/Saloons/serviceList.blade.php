@@ -24,7 +24,7 @@
                 <div class="rating">⭐ 4.94 (480K reviews)</div>
                 <div class="price-duration">
                     <span class="price">₹{{ number_format($service->price, 2) }}</span>
-                    <span class="duration">• {{ $service->time }} hrs</span>
+                    <span class="duration">• {{ $service->time }} hrs/mins</span>
                 </div>
                 <form action="{{ route('users.add.cart') }}" method="POST">
                     @csrf

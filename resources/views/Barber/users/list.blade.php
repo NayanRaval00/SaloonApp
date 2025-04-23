@@ -11,7 +11,13 @@
                 <p class="card-description">
                     List of registered users.
                 </p>
+                <div class="d-flex align-items-center justify-content-md-end">
+                    <a href="{{ route('admin.users.download') }}" title="Download Users" class="btn btn-success btn-rounded btn-fw mr-2">
+                        Download
+                    </a>
+                </div>
                 <div class="table-responsive pt-3">
+
                     <table class="table table-bordered">
                         <thead>
                             <tr>
@@ -26,19 +32,19 @@
                         </thead>
                         <tbody>
                             @forelse ($users as $key => $user)
-                                <tr>
-                                    <td>{{ $users->firstItem() + $key }}</td>
-                                    <td>{{ $user->name }}</td>
-                                    <td>{{ $user->email }}</td>
-                                    <td>{{ $user->mobile_number ?? 'N/A' }}</td>
-                                    <td>{{ $user->city ?? 'N/A' }}</td>
-                                    <td>{{ $user->state ?? 'N/A' }}</td>
-                                    <td>{{ $user->country ?? 'N/A' }}</td>
-                                </tr>
+                            <tr>
+                                <td>{{ $users->firstItem() + $key }}</td>
+                                <td>{{ $user->name }}</td>
+                                <td>{{ $user->email }}</td>
+                                <td>{{ $user->mobile_number ?? 'N/A' }}</td>
+                                <td>{{ $user->city ?? 'N/A' }}</td>
+                                <td>{{ $user->state ?? 'N/A' }}</td>
+                                <td>{{ $user->country ?? 'N/A' }}</td>
+                            </tr>
                             @empty
-                                <tr>
-                                    <td colspan="8" class="text-center">No users found.</td>
-                                </tr>
+                            <tr>
+                                <td colspan="8" class="text-center">No users found.</td>
+                            </tr>
                             @endforelse
                         </tbody>
                     </table>

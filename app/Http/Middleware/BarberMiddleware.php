@@ -12,7 +12,7 @@ class BarberMiddleware
     {
         $barber = Auth::guard('barber')->user(); 
         if (!$barber || !$barber->hasRole('barber')) {
-            return redirect()->route('barber.login')->with('error', 'Access Denied!');
+            return redirect()->route('barber.login')->with('error', 'Please log in to continue.');
         }
         return $next($request);
     }

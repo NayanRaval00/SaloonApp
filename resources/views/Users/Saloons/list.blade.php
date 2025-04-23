@@ -93,7 +93,11 @@
                 <div class="col-xl-4 col-md-6" data-aos="zoom-in" data-aos-delay="300">
                     <div class="service-item">
                         <div class="img">
+                            @if($saloon->profile_image == null)
                             <img src="{{ asset('user/assets/img/website_photos/service-2.jpg')}}" class="img-fluid" alt="Saloon Image">
+                            @else
+                            <img src="{{ asset('storage/' . $saloon->profile_image) }}" class="img-fluid" alt="Saloon Image">
+                            @endif
                         </div>
                         <div class="details position-relative">
                             <div class="icon">

@@ -12,7 +12,7 @@ class AdminMiddleware
     {
         $admin = Auth::guard('admin')->user(); 
         if (!$admin || !$admin->hasRole('admin')) {
-            return redirect()->route('admin.login')->with('error', 'Access Denied!');
+            return redirect()->route('admin.login')->with('error', 'Please log in to continue.');
         }
         return $next($request);
     }

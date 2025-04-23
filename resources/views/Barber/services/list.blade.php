@@ -39,7 +39,7 @@
                                 <td>{{ $service->name }}</td>
                                 <td>{{ $service->category->name }}</td>
                                 <td>{{ $service->barber->name }}</td>
-                                <td>${{ number_format($service->price, 2) }}</td>
+                                <td>₹{{ number_format($service->price, 2) }}</td>
                                 <td>{{ $service->time }}</td>
                                 <td>
                                     <span class="badge {{ $service->status ? 'badge-success' : 'badge-danger' }}">
